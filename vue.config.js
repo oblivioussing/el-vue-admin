@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const environment = require('./build/environment')
 
 module.exports = {
-  baseUrl: '/cxperp/',
+  baseUrl: '/',
   configureWebpack: {
     plugins: [
       //定义全局变量
@@ -13,6 +13,6 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 12000,
+    port: 12000
   }
 }

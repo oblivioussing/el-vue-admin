@@ -1,4 +1,4 @@
-(() => {
+;(() => {
   const urlMap = {
     local: process.env.LOCAL_URL + 'api',
     sit: 'http://xxx.xxx.xxx:xxxx/sit/api',
@@ -16,5 +16,4 @@
     //stage不存在默认为本地开发环境
     stage = stage || 'local'
   }
-
 })()
