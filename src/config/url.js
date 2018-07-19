@@ -15,6 +15,7 @@ if (nodeEnv === 'production' && !stage) {
   //stage不存在默认为本地开发环境
   stage = stage || 'local'
 }
+
 const url = urlMap[stage]
 
 export default { url }

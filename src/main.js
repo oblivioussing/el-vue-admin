@@ -4,7 +4,6 @@ import router from './router'
 import store from './store'
 
 // 基础文件引用
-import './utils/dictionary'
 import core from '@/utils/core'
 import request from '@/utils/request'
 
