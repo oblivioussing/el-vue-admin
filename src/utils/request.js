@@ -2,18 +2,18 @@ import axios from 'axios'
 import qs from 'qs'
 import config from './config'
 
-axios.defaults.withCredentials = true
-axios.defaults.timeout = 5000
+axios.defaults.withCredentials = true // 允许携带cookie
+axios.defaults.timeout = 5000 // 超时时间
 
 // 接口请求地址
-const host = config.url
+const url = config.url
 
 const request = {
   // get请求
   async get(path, params) {
     const config = {
       method: 'get',
-      url: host + path,
+      url: url + path,
       params: params
     }
     return await request.request(config)
@@ -22,7 +22,7 @@ const request = {
   async post(path, params) {
     const config = {
       method: 'post',
-      url: host + path,
+      url: url + path,
       data: qs.stringify(params, { indices: false })
     }
     return await request.request(config)
@@ -32,7 +32,7 @@ const request = {
     const config = {
       method: 'post',
       headers: { 'Content-Type': 'multipart/form-data' },
-      url: host + path,
+      url: url + path,
       data: qs.stringify(params)
     }
     return await request.request(config)
