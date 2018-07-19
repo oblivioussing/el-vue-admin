@@ -2,6 +2,9 @@ import axios from 'axios'
 import qs from 'qs'
 import config from './config'
 
+axios.defaults.withCredentials = true
+axios.defaults.timeout = 5000
+
 // 接口请求地址
 const host = config.url
 
@@ -36,8 +39,6 @@ const request = {
   },
   // 发起请求
   request(config) {
-    config.withCredentials = true
-    config.timeout = 10000
     return new Promise(resolve => {
       axios(config)
         .then(ret => {
