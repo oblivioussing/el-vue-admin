@@ -19,8 +19,6 @@ import './styles/reset.css'
 import core from '@/utils/core'
 import request from '@/utils/request'
 
-console.log(core)
-
 window.$core = core
 window.$request = request
 
