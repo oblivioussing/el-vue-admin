@@ -10,7 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 插件使用
 Vue.use(ElementUI)
 
-// 样式文件引用
+// 样式引用
 import './styles/common.scss'
 import './styles/element-ui.scss'
 import './styles/reset.css'

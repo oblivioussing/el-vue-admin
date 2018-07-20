@@ -26,7 +26,11 @@
       </el-menu-item>
     </el-menu>
     <el-container>
-      <el-header>Header</el-header>
+      <el-header>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-menu-shrink"></use>
+        </svg>
+      </el-header>
       <el-main>Main</el-main>
     </el-container>
   </el-container>
