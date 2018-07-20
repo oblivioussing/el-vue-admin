@@ -13,6 +13,6 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 12000
+    port: 8080
   }
 }
