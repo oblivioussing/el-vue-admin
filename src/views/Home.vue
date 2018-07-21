@@ -2,11 +2,14 @@
   <el-container class="h-100">
     <el-menu default-active="1-4-1" class="el-menu-vertical" :collapse="isCollapse">
       <div class="el-menu-header">
-        <img class="gravity-center" src="../assets/img/logo_large.svg">
+        <img v-show="isCollapse" class="gravity-center" src="../assets/img/logo_smell.svg">
+        <img v-show="!isCollapse" class="gravity-center" src="../assets/img/logo_large.svg">
       </div>
       <el-submenu index="1">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-menu-shrink"></use>
+          </svg>
           <span slot="title">导航一</span>
         </template>
         <el-menu-item index="1-1">选项1</el-menu-item>
@@ -26,9 +29,9 @@
       </el-menu-item>
     </el-menu>
     <el-container>
-      <el-header>
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-menu-shrink"></use>
+      <el-header class="rel">
+        <svg @click="collapseToggle" class="icon vetically ic-menu-toggle">
+          <use xlink:href="#icon-menu"></use>
         </svg>
       </el-header>
       <el-main>Main</el-main>
@@ -43,11 +46,17 @@ export default {
     return {
       isCollapse: false
     }
+  },
+  methods: {
+    // 菜单收缩和展开切换
+    collapseToggle() {
+      this.isCollapse = !this.isCollapse
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .el-menu-vertical {
   .el-menu-header {
     height: 60px;
@@ -56,5 +65,9 @@ export default {
 }
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;
+}
+.ic-menu-toggle {
+  color: #409eff;
+  left: 10px;
 }
 </style>
