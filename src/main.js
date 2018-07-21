@@ -29,6 +29,14 @@ import request from '@/utils/request'
 window.$core = core
 window.$request = request
 
+//全局路由钩子
+router.beforeEach((to, from, next) => {
+  // 通知menuTabs路由变化
+  store.commit('menuTabs/routerChange', to)
+  // resolve钩子
+  next()
+})
+
 Vue.config.productionTip = false
 
 new Vue({

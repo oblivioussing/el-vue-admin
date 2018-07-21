@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 const Home = () => import('@/views/Home')
+// 首页
+const index = () => import('@/views/sys/index')
 // 商品
 const goodsList = () => import('@/views/goods/list')
 const goodsView = () => import('@/views/goods/view')
@@ -13,8 +15,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      hidden: true,
+      component: Home,
+      children: [
+        { path: '/', component: index }
+      ]
     },
     {
       path: '/goods',
@@ -23,7 +28,7 @@ export default new Router({
       component: Home,
       children: [
         { path: '/goodsList', title: '商品列表', component: goodsList },
-        { path: '/goodsView', title: '商品详情', component: goodsView }
+        { path: '/goodsView', title: '商品详情', component: goodsView, hidden: true }
       ]
     },
     {

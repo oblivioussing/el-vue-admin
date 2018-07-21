@@ -1,36 +1,25 @@
 <template>
   <el-container class="h-100">
     <!-- 侧栏导航菜单 -->
-    <el-menu default-active="1-1-1" class="el-menu-vertical" :collapse="isCollapse">
+    <el-menu @select="menuSelect" :collapse="isCollapse" class="el-menu-vertical">
       <!-- 左侧顶部logo -->
       <div class="el-menu-header">
         <img v-show="isCollapse" class="gravity-center" src="../assets/img/logo_smell.svg">
         <img v-show="!isCollapse" class="gravity-center" src="../assets/img/logo_large.svg">
       </div>
-      <!-- 菜单列表 -->
-      <el-submenu index="1">
+      <!-- 一级菜单 -->
+      <el-submenu v-if="!item.hidden" v-for="item in menus" :index="item.path" :key="item.path">
         <template slot="title">
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-menu-shrink"></use>
+            <use :xlink:href="'#icon-'+item.icon"></use>
           </svg>
-          <span slot="title">导航一</span>
-
+          <span slot="title">{{item.title}}</span>
         </template>
-        <el-menu-item index="1-1">选项1</el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
+        <!-- 二级菜单 -->
+        <el-menu-item v-if="!children.hidden" v-for="children in item.children" :index="children.path" :key="children.path">
+          {{children.title}}
+        </el-menu-item>
       </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
-      </el-menu-item>
     </el-menu>
     <!-- 右侧内容区 -->
     <el-container>
@@ -42,66 +31,48 @@
       </el-header>
       <!-- tab选项卡 -->
       <el-row class="el-tabs-container">
-        <el-tabs v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit">
-          <el-tab-pane :key="item.name" v-for="(item) in editableTabs" :label="item.title" :name="item.name">
+        <el-tabs v-show="tabs.length" :value="actived" type="card">
+          <el-tab-pane v-for="item in tabs" :key="item.path" :label="item.title" :name="item.path">
           </el-tab-pane>
         </el-tabs>
       </el-row>
       <!-- 内容展示区 -->
       <el-main>
-        <router-view/>
+        <transition name="fade">
+          <keep-alive :exclude="exclude">
+            <router-view/>
+          </keep-alive>
+        </transition>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'home',
   data() {
     return {
-      isCollapse: false,
-      editableTabsValue: '2',
-      editableTabs: [{
-        title: 'Tab 1',
-        name: '1',
-        content: 'Tab 1 content'
-      }, {
-        title: 'Tab 2',
-        name: '2',
-        content: 'Tab 2 content'
-      }],
-      tabIndex: 2
+      isCollapse: false, // 是否折叠菜单
     }
   },
+  created() {
+    
+  },
+  computed: {
+    ...mapState('menuTabs', {
+      menus: state => state.menus,
+      tabs: state => state.tabs,
+      actived: state => state.actived,
+      exclude: state => state.exclude
+    })
+  },
   methods: {
-    handleTabsEdit(targetName, action) {
-      if (action === 'add') {
-        let newTabName = ++this.tabIndex + '';
-        this.editableTabs.push({
-          title: 'New Tab',
-          name: newTabName,
-          content: 'New Tab content'
-        });
-        this.editableTabsValue = newTabName;
-      }
-      if (action === 'remove') {
-        let tabs = this.editableTabs;
-        let activeName = this.editableTabsValue;
-        if (activeName === targetName) {
-          tabs.forEach((tab, index) => {
-            if (tab.name === targetName) {
-              let nextTab = tabs[index + 1] || tabs[index - 1];
-              if (nextTab) {
-                activeName = nextTab.name;
-              }
-            }
-          });
-        }
-
-        this.editableTabsValue = activeName;
-        this.editableTabs = tabs.filter(tab => tab.name !== targetName);
-      }
+    //菜单切换
+    menuSelect(path) {
+      this.$router.push(path)
     },
     // 菜单收缩和展开切换
     collapseToggle() {
@@ -125,7 +96,7 @@ export default {
   color: #fff;
   left: 10px;
 }
-.el-tabs-container{
+.el-tabs-container {
   padding: 5px 5px 0 5px;
 }
 </style>
