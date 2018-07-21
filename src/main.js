@@ -10,9 +10,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 插件使用
 Vue.use(ElementUI)
 
-// iconfont引用
+// iconfont
 import './assets/iconfont/iconfont'
 import './assets/iconfont/iconfont.css'
+
+// ui自适应
+import './utils/adapter'
 
 // 样式引用
 import './styles/common.scss'

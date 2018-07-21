@@ -3,6 +3,7 @@ import Router from 'vue-router'
 const Home = () => import('@/views/Home')
 // 商品
 const goodsList = () => import('@/views/goods/list')
+const goodsView = () => import('@/views/goods/view')
 // 设置
 const dictList = () => import('@/views/setting/dict')
 
@@ -21,7 +22,8 @@ export default new Router({
       icon: 'goods',
       component: Home,
       children: [
-        { path: '/goodsList', title: '商品列表', component: goodsList }
+        { path: '/goodsList', title: '商品列表', component: goodsList },
+        { path: '/goodsView', title: '商品详情', component: goodsView }
       ]
     },
     {

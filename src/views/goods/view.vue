@@ -1,11 +1,11 @@
 <template>
   <div>
-    我是字典列表
+    我是商品详情
   </div>
 </template>
 
 <script>
 export default {
-  name: 'dictList'
+  name: 'goodsList'
 }
 </script>
