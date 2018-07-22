@@ -1,11 +1,11 @@
 <template>
   <div>
-    我是商品详情
+    我是商品新增
   </div>
 </template>
 
 <script>
 export default {
-  name: 'goodsView'
+  name: 'goodsAdd'
 }
 </script>

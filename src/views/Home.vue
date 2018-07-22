@@ -1,7 +1,7 @@
 <template>
   <el-container class="h-100">
     <!-- 侧栏导航菜单 -->
-    <el-menu @select="menuSelect" :collapse="isCollapse" class="el-menu-vertical">
+    <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" unique-opened class="el-menu-vertical">
       <!-- 左侧顶部logo -->
       <div class="el-menu-header">
         <img v-show="isCollapse" class="gravity-center" src="../assets/img/logo_smell.svg">
@@ -31,7 +31,7 @@
       </el-header>
       <!-- tab选项卡 -->
       <el-row class="el-tabs-container">
-        <el-tabs v-show="tabs.length" :value="actived" type="card">
+        <el-tabs v-show="tabs.length" @tab-click="tab" @tab-remove="removeTab" :value="actived" closable type="card">
           <el-tab-pane v-for="item in tabs" :key="item.path" :label="item.title" :name="item.path">
           </el-tab-pane>
         </el-tabs>
@@ -58,9 +58,6 @@ export default {
       isCollapse: false, // 是否折叠菜单
     }
   },
-  created() {
-    
-  },
   computed: {
     ...mapState('menuTabs', {
       menus: state => state.menus,
@@ -77,6 +74,14 @@ export default {
     // 菜单收缩和展开切换
     collapseToggle() {
       this.isCollapse = !this.isCollapse
+    },
+    //tab切换
+    tab(obj) {
+      this.$router.push(obj.name)
+    },
+    //关闭tab
+    removeTab(name) {
+      this.$store.commit('menuTabs/removeTab', name)
     }
   }
 }

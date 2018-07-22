@@ -6,6 +6,7 @@ const index = () => import('@/views/sys/index')
 // 商品
 const goodsList = () => import('@/views/goods/list')
 const goodsView = () => import('@/views/goods/view')
+const goodsAdd = () => import('@/views/goods/add')
 // 设置
 const dictList = () => import('@/views/setting/dict')
 
@@ -28,6 +29,7 @@ export default new Router({
       component: Home,
       children: [
         { path: '/goodsList', title: '商品列表', component: goodsList },
+        { path: '/goodsAdd', title: '商品新增', component: goodsAdd, hidden: true },
         { path: '/goodsView', title: '商品详情', component: goodsView, hidden: true }
       ]
     },

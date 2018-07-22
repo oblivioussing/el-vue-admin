@@ -11,7 +11,7 @@
       </el-form>
     </el-row>
     <el-row class="toolbar">
-      <el-button type="primary" size="mini">新增</el-button>
+      <el-button @click="add" type="primary" size="mini">新增</el-button>
       <el-button-group class="vetically right-10">
         <el-button size="mini" type="primary">查询</el-button>
         <el-button size="mini" type="primary">刷新</el-button>
@@ -61,6 +61,10 @@ export default {
     // 获取列表
     getlist() {
 
+    },
+    // 新增
+    add() {
+      this.$router.push('goodsAdd')
     },
     // page改变时
     currentChange(page) {

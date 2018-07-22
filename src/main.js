@@ -14,9 +14,6 @@ Vue.use(ElementUI)
 import './assets/iconfont/iconfont'
 import './assets/iconfont/iconfont.css'
 
-// ui自适应
-import './utils/adapter'
-
 // 样式引用
 import './styles/common.scss'
 import './styles/element-ui.scss'
@@ -29,12 +26,19 @@ import request from '@/utils/request'
 window.$core = core
 window.$request = request
 
+// ui自适应
+import adapter from '@/utils/adapter'
+
 //全局路由钩子
 router.beforeEach((to, from, next) => {
   // 通知menuTabs路由变化
   store.commit('menuTabs/routerChange', to)
   // resolve钩子
   next()
+})
+router.afterEach((to, from) => {
+  // ui自适应初始化
+  adapter.init()
 })
 
 Vue.config.productionTip = false
