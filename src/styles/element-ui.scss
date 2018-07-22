@@ -16,13 +16,16 @@
   padding: 5px;
 }
 
-.el-footer{
+.el-footer {
   padding: 0;
 }
+
 // 表单
-.el-form {
-  .el-form-item {
-    margin-bottom: 0;
+.toolbar {
+  .el-form {
+    .el-form-item {
+      margin-bottom: 0;
+    }
   }
 }
 

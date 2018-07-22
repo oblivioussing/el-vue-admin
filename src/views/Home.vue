@@ -7,19 +7,21 @@
         <img v-show="isCollapse" class="gravity-center" src="../assets/img/logo_smell.svg">
         <img v-show="!isCollapse" class="gravity-center" src="../assets/img/logo_large.svg">
       </div>
-      <!-- 一级菜单 -->
-      <el-submenu v-if="!item.hidden" v-for="item in menus" :index="item.path" :key="item.path">
-        <template slot="title">
-          <svg class="icon" aria-hidden="true">
-            <use :xlink:href="'#icon-'+item.icon"></use>
-          </svg>
-          <span slot="title">{{item.title}}</span>
-        </template>
-        <!-- 二级菜单 -->
-        <el-menu-item v-if="!children.hidden" v-for="children in item.children" :index="children.path" :key="children.path">
-          {{children.title}}
-        </el-menu-item>
-      </el-submenu>
+      <div class="nav-menu-container">
+        <!-- 一级菜单 -->
+        <el-submenu v-if="!item.hidden" v-for="item in menus" :index="item.path" :key="item.path">
+          <template slot="title">
+            <svg class="icon" aria-hidden="true">
+              <use :xlink:href="'#icon-'+item.icon"></use>
+            </svg>
+            <span slot="title">{{item.title}}</span>
+          </template>
+          <!-- 二级菜单 -->
+          <el-menu-item v-if="!children.hidden" v-for="children in item.children" :index="children.path" :key="children.path">
+            {{children.title}}
+          </el-menu-item>
+        </el-submenu>
+      </div>
     </el-menu>
     <!-- 右侧内容区 -->
     <el-container>

@@ -1,3 +1,7 @@
+body{
+  overflow: hidden;
+}
+
 /*布局*/
 
 .flex {
@@ -128,11 +132,11 @@
   margin-top: 20px;
 }
 
-.m-b-5{
+.m-b-5 {
   margin-bottom: 5px;
 }
 
-.m-b-10{
+.m-b-10 {
   margin-bottom: 10px;
 }
 
@@ -348,10 +352,17 @@
   left: 15px;
 }
 
-/* 滚动条样式 */
+// 工具栏样式
+.toolbar {
+  background-color: #f2f2f2;
+  margin-bottom: 5px;
+  padding: 8px 5px;
+}
 
-.scroll-revise {
+// 滚动条样式
+.scroll-beautify {
   overflow-y: auto;
+  padding: 10px;
   -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar {
     background-color: #eef1f6;
@@ -359,13 +370,29 @@
     width: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #e4e8f1;
+    background-color: #B9CCDD;
   }
 }
 
-// 工具栏样式
-.toolbar{
-  background-color: #f2f2f2;
-  margin-bottom: 5px;
-  padding: 8px 5px;
+// 基础容器修改滚动样式
+.form-container,
+.nav-menu-container {
+  overflow-y: auto;
+  padding: 10px;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    background-color: #eef1f6;
+    height: 5px;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #B9CCDD;
+  }
+}
+
+// 表单title
+.form-title {
+  color: #777;
+  font-size: 18px;
+  padding-bottom: 10px;
 }

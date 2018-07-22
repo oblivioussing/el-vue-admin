@@ -18,7 +18,7 @@
         <el-button size="mini" type="primary">重置</el-button>
       </el-button-group>
     </el-row>
-    <el-container class="list-container" style="height:300px;">
+    <el-container class="list-container">
       <el-table :data="list" border height="100%">
         <el-table-column prop="date" label="日期" align="center">
         </el-table-column>
