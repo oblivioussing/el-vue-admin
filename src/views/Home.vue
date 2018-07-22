@@ -37,7 +37,7 @@
         </el-tabs>
       </el-row>
       <!-- 内容展示区 -->
-      <el-main>
+      <el-main class="h-100">
         <transition name="fade">
           <keep-alive :exclude="exclude">
             <router-view/>

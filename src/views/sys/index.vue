@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<div class="gravity-center">欢迎你,杂碎们</div>
+	<div class="rel h-100">
+		<div class="gravity-center">龙套的银眼狮子王</div>
 	</div>
 </template>
 
