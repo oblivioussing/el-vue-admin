@@ -1,6 +1,6 @@
 <template>
-	<div class="bg-index h-100">
-		
+	<div class="rel h-100">
+		<div class="gravity-center">Hello World</div>
 	</div>
 </template>
 
@@ -10,8 +10,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.bg-index{
-	background: url(../../assets/img/test/bg_index.jpg) no-repeat center;
-	background-size: 100% 100%;
+.gravity-center{
+	font-size: 24px;
 }
 </style>

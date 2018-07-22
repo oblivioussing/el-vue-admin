@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 const Home = () => import('@/views/Home')
+// 系统相关
+const login = () => import('@/views/sys/login')
 // 首页
 const index = () => import('@/views/sys/index')
 // 商品
@@ -14,6 +17,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/login',
+      hidden: true,
+      component: login,
+    },
     {
       path: '/',
       hidden: true,

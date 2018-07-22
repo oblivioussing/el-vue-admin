@@ -14,7 +14,8 @@ const state = {
 const getters = {
   // 当前路由的父级path
   stair(state) {
-    return state.pathMap[state.actived].parentPath
+    const pathMap = state.pathMap[state.actived]
+    return pathMap && pathMap.parentPath
   }
 }
 
@@ -42,7 +43,8 @@ const mutations = {
     } else {
       actived = state.tabs.length > 0 ? state.tabs[0].path : '/'
     }
-    const skip = state.pathMap[path].skip
+    const pathMap = state.pathMap[path]
+    const skip = pathMap && pathMap.skip
     state.actived = skip || actived
     state.exclude = path.substr(1)
     $core.setSession('menuTabs', state.tabs)
@@ -91,7 +93,8 @@ const methods = {
   // 添加一个tab
   addTab(to) {
     const path = to.path
-    const title = state.pathMap[path].title
+    const pathMap = state.pathMap[path]
+    const title = pathMap && pathMap.title
     title && state.tabs.push({ path, title })
     $core.setSession('menuTabs', state.tabs)
   }

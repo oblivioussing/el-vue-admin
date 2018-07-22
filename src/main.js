@@ -31,10 +31,14 @@ import adapter from '@/utils/adapter'
 
 //全局路由钩子
 router.beforeEach((to, from, next) => {
-  // 通知menuTabs路由变化
-  store.commit('menuTabs/routerChange', to)
-  // resolve钩子
-  next()
+  if (!$core.getSession('user') && to.path !== '/login') {
+    next('/login')
+  } else {
+    // 通知menuTabs路由变化
+    store.commit('menuTabs/routerChange', to)
+    // resolve钩子
+    next()
+  }
 })
 router.afterEach((to, from) => {
   // ui自适应初始化
