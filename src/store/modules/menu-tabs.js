@@ -4,9 +4,18 @@ const state = {
   menus: [], // 菜单列表
   tabs: [], // 顶部tab
   actived: '', // 需要激活的path
+  pathMap: {}, // 路由映射
   pathTitleMap: {}, // path和title的映射
   pathSkipMap: {}, // path和skip的映射
+  pathTierMap: {}, // path层级的映射
   exclude: '' // 销毁的路由组件
+}
+
+const getters = {
+  // 当前路由的父级path
+  stair(state) {
+    return state.pathMap[state.actived].parentPath
+  }
 }
 
 const mutations = {
@@ -33,7 +42,7 @@ const mutations = {
     } else {
       actived = state.tabs.length > 0 ? state.tabs[0].path : '/'
     }
-    const skip = state.pathSkipMap[path]
+    const skip = state.pathMap[path].skip
     state.actived = skip || actived
     state.exclude = path.substr(1)
     $core.setSession('menuTabs', state.tabs)
@@ -47,28 +56,13 @@ const methods = {
   init() {
     // 菜单列表
     state.menus = router.options.routes
-    // 初始化path和title的映射
-    this.pathTitleInit()
-    // 初始化path和skip的映射
-    this.pathSkipInit()
+    // 初始化路由映射
+    this.pathMapInit()
     // 从缓存中获取tabs
     state.tabs = $core.getSession('menuTabs') || []
   },
-  // 初始化path和title的映射
-  pathTitleInit() {
-    const menus = state.menus
-    menus.forEach(item => {
-      const children = item.children
-      if (children) {
-        children.forEach(cItem => {
-          let { path, title } = cItem
-          title ? state.pathTitleMap[path] = title : ''
-        })
-      }
-    })
-  },
-  // 初始化path和skip的映射
-  pathSkipInit() {
+  // 初始化路由映射
+  pathMapInit() {
     const menus = state.menus
     menus.forEach(item => {
       const path = item.path
@@ -78,17 +72,26 @@ const methods = {
       }
       children.forEach(cItem => {
         const cPath = cItem.path
+        const cTtile = cItem.title
         const skip = path + 'List'
+        let map = {}
+        // path和title的映射
+        cTtile ? map.title = cTtile : ''
+        // path和skip的映射
         if (cPath.indexOf('List') < 0 && cPath !== '/') {
-          state.pathSkipMap[cPath] = skip
+          map.skip = skip
         }
+        // path的父级路由的映射
+        map.parentPath = path
+        // 路由映射
+        state.pathMap[cPath] = map
       })
     })
   },
   // 添加一个tab
   addTab(to) {
     const path = to.path
-    const title = state.pathTitleMap[path]
+    const title = state.pathMap[path].title
     title && state.tabs.push({ path, title })
     $core.setSession('menuTabs', state.tabs)
   }
@@ -97,5 +100,6 @@ const methods = {
 export default {
   namespaced: true,
   state,
+  getters,
   mutations
 }

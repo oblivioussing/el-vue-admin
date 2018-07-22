@@ -1,7 +1,7 @@
 <template>
   <el-container class="h-100">
     <!-- 侧栏导航菜单 -->
-    <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" unique-opened class="el-menu-vertical">
+    <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical">
       <!-- 左侧顶部logo -->
       <div class="el-menu-header">
         <img v-show="isCollapse" class="gravity-center" src="../assets/img/logo_smell.svg">
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'home',
@@ -60,10 +60,13 @@ export default {
   },
   computed: {
     ...mapState('menuTabs', {
-      menus: state => state.menus,
-      tabs: state => state.tabs,
-      actived: state => state.actived,
-      exclude: state => state.exclude
+      menus: 'menus',
+      tabs: 'tabs',
+      actived: 'actived',
+      exclude: 'exclude'
+    }),
+    ...mapGetters('menuTabs', {
+      'stair': 'stair'
     })
   },
   methods: {
