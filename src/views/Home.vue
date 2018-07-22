@@ -1,13 +1,13 @@
 <template>
   <el-container class="h-100">
-    <!-- 侧栏导航菜单 -->
-    <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical">
+    <el-row>
       <!-- 左侧顶部logo -->
       <div class="el-menu-header">
-        <img v-show="isCollapse" class="gravity-center" src="../assets/img/logo_smell.svg">
-        <img v-show="!isCollapse" class="gravity-center" src="../assets/img/logo_large.svg">
+        <img v-show="isCollapse" class="gravity-center" src="../assets/img/test/logo_smell.svg">
+        <img v-show="!isCollapse" class="gravity-center" src="../assets/img/test/logo_large.svg">
       </div>
-      <div class="nav-menu-container">
+      <!-- 侧栏导航菜单 -->
+      <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical scroll-beautify">
         <!-- 一级菜单 -->
         <el-submenu v-if="!item.hidden" v-for="item in menus" :index="item.path" :key="item.path">
           <template slot="title">
@@ -21,8 +21,8 @@
             {{children.title}}
           </el-menu-item>
         </el-submenu>
-      </div>
-    </el-menu>
+      </el-menu>
+    </el-row>
     <!-- 右侧内容区 -->
     <el-container>
       <!-- 右侧顶部 -->
@@ -93,11 +93,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.el-menu-header {
+  height: 60px;
+  position: relative;
+  width: 100%;
+}
 .el-menu-vertical {
-  .el-menu-header {
-    height: 60px;
-    position: relative;
-  }
+  height: calc(100vh - 60px);
 }
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;

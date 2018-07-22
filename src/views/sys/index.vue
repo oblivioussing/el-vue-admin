@@ -1,6 +1,6 @@
 <template>
-	<div class="rel h-100">
-		<div class="gravity-center">龙套的银眼狮子王</div>
+	<div class="bg-index h-100">
+		
 	</div>
 </template>
 
@@ -10,8 +10,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.gravity-center {
-  font-size: 40px;
-  text-align: center;
+.bg-index{
+	background: url(../../assets/img/test/bg_index.jpg) no-repeat center;
+	background-size: 100% 100%;
 }
 </style>

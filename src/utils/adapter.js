@@ -9,8 +9,6 @@ const adapter = {
       this.listAdapter()
       // 表单容器高度自适应
       this.formAdapter()
-      // 导航菜单那容器自适应
-      this.navMenuAdapter()
     })
   },
   // 列表容器自适应
@@ -25,13 +23,6 @@ const adapter = {
     let containerEl = document.querySelector('.form-container')
     if (containerEl) {
       containerEl.style.height = 'calc(100vh - 160px)'
-    }
-  },
-  // 导航菜单那容器自适应
-  navMenuAdapter(){
-    let containerEl = document.querySelector('.nav-menu-container')
-    if (containerEl) {
-      containerEl.style.height = 'calc(100vh - 60px)'
     }
   }
 }
