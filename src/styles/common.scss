@@ -1,0 +1,40 @@
+html,
+body {
+  overflow: hidden;
+}
+
+// 滚动条样式
+.scroll-beautify {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    background-color: #eef1f6;
+    height: 5px;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #B9CCDD;
+  }
+}
+
+// 基础容器修改滚动样式
+.form-container {
+  overflow-y: auto;
+  padding: 10px;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    background-color: #eef1f6;
+    height: 5px;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #B9CCDD;
+  }
+}
+
+// 表单title
+.form-title {
+  color: #777;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
