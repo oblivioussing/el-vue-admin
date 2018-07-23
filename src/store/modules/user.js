@@ -5,7 +5,7 @@ const state = {
 }
 const mutations = {
   // 保存用户信息
-  saveUser(state, obj) {
+  saveUserInfo(state, obj) {
     state.userInfo = obj
     $core.setSession('userInfo', state.userInfo)
   }
@@ -16,6 +16,7 @@ const actions = {
 }
 
 export default {
+  namespaced: true,
   state,
   mutations,
   actions

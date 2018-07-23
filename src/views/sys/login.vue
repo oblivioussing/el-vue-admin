@@ -50,6 +50,7 @@ export default {
         const ret = await $request.post('', formTemp)
         this.loading = false
         if (ret.code === $dict.success) {
+          this.$store.commit('user/saveUserInfo', ret.resultData)
           this.$router.replace({ path: '/' })
         } else {
           this.$message.error(ret.msg)
