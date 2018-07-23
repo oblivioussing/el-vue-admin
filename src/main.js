@@ -6,11 +6,13 @@ import store from './store'
 // 模块引用
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import moment from 'moment'
+import md5 from 'js-md5'
 
 // 插件使用
 Vue.use(ElementUI)
 
-// iconfont
+// iconfont引用
 import './assets/iconfont/iconfont'
 import './assets/iconfont/iconfont.css'
 
@@ -29,11 +31,10 @@ import dict from '@/config/dict'
 window.$core = core
 window.$request = request
 window.$dict = dict
+window.moment = moment
+window.md5 = md5
 
-// ui自适应
-import adapter from '@/utils/adapter'
-
-//全局路由钩子
+// 全局路由前置守卫
 router.beforeEach((to, from, next) => {
   if (!$core.getSession('user') && to.path !== '/login') {
     next('/login')
@@ -44,6 +45,11 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+// ui自适应
+import adapter from '@/utils/adapter'
+
+// 全局路由后置钩子
 router.afterEach((to, from) => {
   // ui自适应初始化
   adapter.init()
