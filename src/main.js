@@ -20,12 +20,15 @@ import './styles/core.scss'
 import './styles/element-ui.scss'
 import './styles/reset.css'
 
-// 全局变量
+// js文件引用
 import core from '@/utils/core'
 import request from '@/utils/request'
+import dict from '@/config/dict'
 
+// 全局变量
 window.$core = core
 window.$request = request
+window.$dict = dict
 
 // ui自适应
 import adapter from '@/utils/adapter'

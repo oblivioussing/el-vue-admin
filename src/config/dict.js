@@ -1,0 +1,25 @@
+// 接口状态
+const apiStateMap = {
+  success: '10', // 成功
+  authFail: '11', // 权限认证失败
+  noLogin: '12', // 未登录
+  longinExpire: '13', // 登陆超时
+  locked: '14' // 用户被锁定
+}
+
+// 文件类型
+const fileTypeMap = {
+  pic: '10', // 图片
+  video: '11', // 视频
+  audio: '12', // 音频
+  pdf: '13', // pdf
+  word: '14', // word
+  excel: '15', // excel
+  txt: '16', // txt
+  apk: '17', // apk
+  zip: '18' // 压缩包
+}
+
+const dict = Object.assign(apiStateMap, fileTypeMap)
+
+export default dict

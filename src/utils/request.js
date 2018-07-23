@@ -1,12 +1,12 @@
 import axios from 'axios'
 import qs from 'qs'
-import urlConfig from '../config/url'
+import apiUrl from '../config/api-url'
 
 axios.defaults.withCredentials = true // 允许携带cookie
 axios.defaults.timeout = 5000 // 超时时间
 
 // 接口请求地址
-const url = urlConfig.url
+const url = apiUrl.url
 
 const request = {
   // get请求
