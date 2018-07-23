@@ -15,7 +15,7 @@ const adapter = {
   listAdapter() {
     let containerEl = document.querySelector('.list-container')
     if (containerEl) {
-      containerEl.style.height = 'calc(100vh - 260px)'
+      containerEl.style.height = 'calc(100vh - 268px)'
     }
   },
   // 表单容器高度自适应

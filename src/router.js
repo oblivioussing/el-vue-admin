@@ -44,8 +44,8 @@ export default new Router({
         { path: '/unpayOrderEdit', title: '待付款订单编辑', component: unpayOrderEdit, hidden: true },
         { path: '/unpayOrderView', title: '待付款订单详情', component: unpayOrderView, hidden: true },
         // 订单(已付款)
-        { path: '/paidOrderList', title: '待付款订单列表', component: paidOrderList },
-        { path: '/paidOrderView', title: '待付款订单编辑', component: paidOrderView, hidden: true }
+        { path: '/paidOrderList', title: '已付款订单列表', component: paidOrderList },
+        { path: '/paidOrderView', title: '已付款订单编辑', component: paidOrderView, hidden: true }
       ]
     },
     {

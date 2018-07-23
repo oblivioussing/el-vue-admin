@@ -1,18 +1,20 @@
 <template>
   <el-container>
-    <el-row class="toolbar">
+    <el-row class="toolbar search">
       <el-form :inline="true" :model="form" size="mini">
-        <el-form-item label="商品名称:">
-          <el-input v-model="form.name"></el-input>
-        </el-form-item>
-        <el-form-item label="商品编号:">
+        <el-form-item label="订单编号:">
           <el-input v-model="form.code"></el-input>
+        </el-form-item>
+        <el-form-item label="购买方名称:">
+          <el-input v-model="form.buyerName"></el-input>
+        </el-form-item>
+        <el-form-item label="销售方名称:">
+          <el-input v-model="form.sellerName"></el-input>
         </el-form-item>
       </el-form>
     </el-row>
-    <el-row class="toolbar">
-      <el-button @click="add" type="primary" size="mini">新增</el-button>
-      <el-button-group class="vetically right-10">
+    <el-row class="toolbar t-a-r">
+      <el-button-group>
         <el-button size="mini" type="primary">查询</el-button>
         <el-button size="mini" type="primary">刷新</el-button>
         <el-button size="mini" type="primary">重置</el-button>
@@ -20,11 +22,16 @@
     </el-row>
     <el-container class="list-container">
       <el-table :data="list" border height="100%">
-        <el-table-column prop="date" label="日期" align="center">
-        </el-table-column>
-        <el-table-column prop="name" label="姓名" align="center">
-        </el-table-column>
-        <el-table-column prop="address" label="地址" align="center">
+        <el-table-column prop="date" label="订单编号" align="center"></el-table-column>
+        <el-table-column prop="name" label="订单类型" align="center"></el-table-column>
+        <el-table-column prop="address" label="下单时间" align="center"></el-table-column>
+        <el-table-column prop="address" label="购买方名称" align="center"></el-table-column>
+        <el-table-column prop="address" label="销售方名称" align="center"></el-table-column>
+        <el-table-column prop="address" label="订单有效期" align="center"></el-table-column>
+        <el-table-column label="操作" fixed="right" align="center">
+          <template slot-scope="scope">
+            <el-button @click="edit(scope.row.id)" type="primary" size="small">编辑</el-button>
+          </template>
         </el-table-column>
       </el-table>
     </el-container>
@@ -39,7 +46,7 @@
 
 <script>
 export default {
-  name: 'goodsList',
+  name: 'unpayOrderList',
   data() {
     return {
       form: {},
@@ -52,7 +59,7 @@ export default {
         {
           date: '2016-05-02',
           name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: '上海市普陀区'
         }
       )
     }
@@ -62,9 +69,9 @@ export default {
     getlist() {
 
     },
-    // 新增
-    add() {
-      this.$router.push('goodsAdd')
+    // 编辑
+    edit(){
+
     },
     // page改变时
     currentChange(page) {

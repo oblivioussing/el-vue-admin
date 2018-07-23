@@ -43,5 +43,8 @@ body {
 .toolbar {
   background-color: #f2f2f2;
   margin-bottom: 5px;
-  padding: 8px 5px;
+  padding: 8px;
+}
+.toolbar.search{
+  padding-bottom: 0 !important;
 }

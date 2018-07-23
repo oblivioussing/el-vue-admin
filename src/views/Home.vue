@@ -106,6 +106,7 @@ export default {
 }
 .ic-menu-toggle {
   color: #fff;
+  cursor: pointer;
   left: 10px;
 }
 .el-tabs-container {
