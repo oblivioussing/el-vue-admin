@@ -57,7 +57,7 @@
 
 <script>
 export default {
-  name: 'goodsAdd',
+  name: 'unpayEdit',
   data() {
     return {
       form: {}

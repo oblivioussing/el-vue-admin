@@ -6,10 +6,13 @@ const Home = () => import('@/views/Home')
 const login = () => import('@/views/sys/login')
 // 首页
 const index = () => import('@/views/sys/index')
-// 商品
-const orderList = () => import('@/views/order/list')
-const orderView = () => import('@/views/order/view')
-const orderAdd = () => import('@/views/order/add')
+// 订单(待付款)
+const unpayOrderList = () => import('@/views/order/unpay/list')
+const unpayOrderEdit = () => import('@/views/order/unpay/edit')
+const unpayOrderView = () => import('@/views/order/unpay/view')
+// 订单(已付款)
+const paidOrderList = () => import('@/views/order/paid/list')
+const paidOrderView = () => import('@/views/order/paid/view')
 // 设置
 const dictList = () => import('@/views/setting/dict')
 
@@ -36,9 +39,13 @@ export default new Router({
       icon: 'order',
       component: Home,
       children: [
-        { path: '/orderList', title: '商品列表', component: orderList },
-        { path: '/orderAdd', title: '商品新增', component: orderAdd, hidden: true },
-        { path: '/orderView', title: '商品详情', component: orderView, hidden: true }
+        // 订单(待付款)
+        { path: '/unpayOrderList', title: '待付款订单列表', component: unpayOrderList },
+        { path: '/unpayOrderEdit', title: '待付款订单编辑', component: unpayOrderEdit, hidden: true },
+        { path: '/unpayOrderView', title: '待付款订单详情', component: unpayOrderView, hidden: true },
+        // 订单(已付款)
+        { path: '/paidOrderList', title: '待付款订单列表', component: paidOrderList },
+        { path: '/paidOrderView', title: '待付款订单编辑', component: paidOrderView, hidden: true }
       ]
     },
     {
