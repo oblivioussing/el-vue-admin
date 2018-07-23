@@ -8,7 +8,6 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import moment from 'moment'
 import md5 from 'js-md5'
-import mock from 'mockjs'
 
 // 插件使用
 Vue.use(ElementUI)
@@ -24,6 +23,7 @@ import './styles/element-ui.scss'
 import './styles/reset.css'
 
 // js文件引用
+import './mock'
 import core from '@/utils/core'
 import request from '@/utils/request'
 import dict from '@/config/dict'
@@ -34,7 +34,6 @@ window.$request = request
 window.$dict = dict
 window.moment = moment
 window.md5 = md5
-window.Mock = mock
 
 // 全局路由前置守卫
 router.beforeEach((to, from, next) => {

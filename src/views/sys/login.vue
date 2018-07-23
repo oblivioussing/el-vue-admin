@@ -47,10 +47,10 @@ export default {
         this.loading = true
         let formTemp = JSON.parse(JSON.stringify(this.form))
         formTemp.pwd = md5(formTemp.pwd)
-        const ret = await $request.post('', formTemp)
+        const ret = await $request.post('api/login', formTemp)
         this.loading = false
         if (ret.code === $dict.success) {
-          this.$store.commit('user/saveUserInfo', ret.resultData)
+          this.$store.commit('user/saveUserInfo', ret.data)
           this.$router.replace({ path: '/' })
         } else {
           this.$message.error(ret.msg)

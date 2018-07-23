@@ -1,8 +1,8 @@
 const urlMap = {
-  local: process.env.LOCAL_URL + 'api',
-  sit: 'http://xxx.xxx.xxx:xxxx/sit/api',
-  uat: 'http://xxx.xxx.xxx:xxxx/uat/api',
-  prod: 'http://xxx.xxx.xxx:xxxx/prod/api'
+  local: process.env.LOCAL_URL + 'local/',
+  sit: 'http://xxx.xxx.xxx:xxxx/sit/',
+  uat: 'http://xxx.xxx.xxx:xxxx/uat/',
+  prod: 'http://xxx.xxx.xxx:xxxx/prod/'
 }
 //sit,uat,prod
 let stage = process.env.STAGE

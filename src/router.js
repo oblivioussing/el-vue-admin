@@ -7,9 +7,9 @@ const login = () => import('@/views/sys/login')
 // 首页
 const index = () => import('@/views/sys/index')
 // 商品
-const goodsList = () => import('@/views/goods/list')
-const goodsView = () => import('@/views/goods/view')
-const goodsAdd = () => import('@/views/goods/add')
+const orderList = () => import('@/views/order/list')
+const orderView = () => import('@/views/order/view')
+const orderAdd = () => import('@/views/order/add')
 // 设置
 const dictList = () => import('@/views/setting/dict')
 
@@ -31,14 +31,14 @@ export default new Router({
       ]
     },
     {
-      path: '/goods',
-      title: '商品',
-      icon: 'goods',
+      path: '/order',
+      title: '订单',
+      icon: 'order',
       component: Home,
       children: [
-        { path: '/goodsList', title: '商品列表', component: goodsList },
-        { path: '/goodsAdd', title: '商品新增', component: goodsAdd, hidden: true },
-        { path: '/goodsView', title: '商品详情', component: goodsView, hidden: true }
+        { path: '/orderList', title: '商品列表', component: orderList },
+        { path: '/orderAdd', title: '商品新增', component: orderAdd, hidden: true },
+        { path: '/orderView', title: '商品详情', component: orderView, hidden: true }
       ]
     },
     {
