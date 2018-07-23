@@ -16,7 +16,7 @@ import './assets/iconfont/iconfont.css'
 
 // 样式引用
 import './styles/base.scss'
-import './styles/common.scss'
+import './styles/core.scss'
 import './styles/element-ui.scss'
 import './styles/reset.css'
 
