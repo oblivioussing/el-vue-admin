@@ -36,7 +36,9 @@ window.md5 = md5
 
 // 全局路由前置守卫
 router.beforeEach((to, from, next) => {
-  if (!$core.getSession('user') && to.path !== '/login') {
+  // 用户信息
+  const userInfo = store.state.user.userInfo
+  if (!userInfo.token && to.path !== '/login') {
     next('/login')
   } else {
     // 通知menuTabs路由变化

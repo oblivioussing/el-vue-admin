@@ -10,7 +10,7 @@
       </el-form-item>
       <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
       <el-form-item>
-        <el-button @click="login" :loading="logining" type="primary" class="w-100">登录</el-button>
+        <el-button @click="login" :loading="loading" type="primary" class="w-100">登录</el-button>
       </el-form-item>
     </el-form>
   </el-row>
@@ -26,7 +26,7 @@ export default {
         pwd: '123456'
       },
       checked: true,
-      logining: false,
+      loading: false,
       rules: {
         loginName: [
           { required: true, message: '请输入账号', trigger: 'blur' }
@@ -38,30 +38,22 @@ export default {
     }
   },
   methods: {
-    handleReset2() {
-      this.$refs.form.resetFields();
-    },
+    // 登陆
     login(ev) {
-      var _this = this;
-      this.$refs.form.validate(valid => {
+      this.$refs.form.validate(async valid => {
         if (!valid) {
           return
         }
-        this.logining = true
-        var loginParams = { username: this.form.loginName, password: this.form.pwd };
-        requestLogin(loginParams).then(data => {
-          this.logining = false;
-          let { msg, code, user } = data;
-          if (code !== 200) {
-            this.$message({
-              message: msg,
-              type: 'error'
-            });
-          } else {
-            sessionStorage.setItem('user', JSON.stringify(user));
-            this.$router.push({ path: '/table' });
-          }
-        })
+        this.loading = true
+        let formTemp = JSON.parse(JSON.stringify(this.form))
+        formTemp.pwd = md5(formTemp.pwd)
+        const ret = await $request.post('', formTemp)
+        this.loading = false
+        if (ret.code === $dict.success) {
+          this.$router.replace({ path: '/' })
+        } else {
+          this.$message.error(ret.msg)
+        }
       })
     }
   }
