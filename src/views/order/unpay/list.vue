@@ -3,7 +3,7 @@
     <el-row class="toolbar search">
       <el-form :inline="true" :model="form" size="mini">
         <el-form-item label="订单编号:">
-          <el-input v-model="form.code"></el-input>
+          <el-input v-model="form.orderNo"></el-input>
         </el-form-item>
         <el-form-item label="购买方名称:">
           <el-input v-model="form.buyerName"></el-input>
@@ -15,19 +15,19 @@
     </el-row>
     <el-row class="toolbar t-a-r">
       <el-button-group>
-        <el-button size="mini" type="primary">查询</el-button>
-        <el-button size="mini" type="primary">刷新</el-button>
-        <el-button size="mini" type="primary">重置</el-button>
+        <el-button @click="query" size="mini" type="primary">查询</el-button>
+        <el-button @click="refresh" size="mini" type="primary">刷新</el-button>
+        <el-button @click="reset" size="mini" type="primary">重置</el-button>
       </el-button-group>
     </el-row>
     <el-container class="list-container">
       <el-table :data="list" border height="100%">
-        <el-table-column prop="date" label="订单编号" align="center"></el-table-column>
-        <el-table-column prop="name" label="订单类型" align="center"></el-table-column>
-        <el-table-column prop="address" label="下单时间" align="center"></el-table-column>
-        <el-table-column prop="address" label="购买方名称" align="center"></el-table-column>
-        <el-table-column prop="address" label="销售方名称" align="center"></el-table-column>
-        <el-table-column prop="address" label="订单有效期" align="center"></el-table-column>
+        <el-table-column prop="orderNo" label="订单编号" align="center"></el-table-column>
+        <el-table-column prop="orderTypeName" label="订单类型" align="center"></el-table-column>
+        <el-table-column prop="createTime" label="下单时间" align="center"></el-table-column>
+        <el-table-column prop="buyerName" label="购买方名称" align="center"></el-table-column>
+        <el-table-column prop="sellerName" label="销售方名称" align="center"></el-table-column>
+        <el-table-column prop="expireTime" label="订单有效期" align="center"></el-table-column>
         <el-table-column label="操作" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button @click="edit(scope.row.id)" type="primary" size="small">编辑</el-button>
@@ -37,7 +37,7 @@
     </el-container>
     <el-footer>
       <el-row class="toolbar m-t-5 t-a-c">
-        <el-pagination :page-sizes="[10, 20, 30, 40]" :current-page="form.page" :page-size="form.size" :total="400" @current-change="currentChange" @size-change="sizeChange" layout="total, sizes, prev, pager, next, jumper">
+        <el-pagination :page-sizes="[10, 20, 30, 40]" :current-page="form.page" :page-size="form.size" :total="total" @current-change="currentChange" @size-change="sizeChange" layout="total, sizes, prev, pager, next, jumper">
         </el-pagination>
       </el-row>
     </el-footer>
@@ -50,28 +50,40 @@ export default {
   data() {
     return {
       form: {},
-      list: []
+      list: [],
+      total: 0
     }
   },
   created() {
-    for (let i = 0; i < 15; i++) {
-      this.list.push(
-        {
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区'
-        }
-      )
-    }
+    // 获取列表
+    this.getlist()
   },
   methods: {
     // 获取列表
-    getlist() {
-
+    async getlist() {
+      const ret = await $request.get('api/listUnpayOrder', this.form)
+      if (ret.code = $dict.success) {
+        this.list = ret.data
+        this.total = this.list.length
+      }
     },
     // 编辑
-    edit(){
+    edit() {
 
+    },
+    //查询
+    query() {
+      this.getlist()
+    },
+    //刷新
+    refresh() {
+      this.reset()
+      this.getlist()
+    },
+    //重置
+    reset() {
+      const [page, size] = [1, 10]
+      this.form = { page, size }
     },
     // page改变时
     currentChange(page) {

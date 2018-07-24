@@ -1,8 +1,7 @@
 import Mock from 'mockjs'
-import apiUrl from '../config/api-url'
 import user from './data/user'
+import { unpayOrderList } from './data/order'
 
-const url = apiUrl.url
 let result = {
   code: '10',
   data: '',
@@ -10,7 +9,13 @@ let result = {
 }
 
 // 登陆
-Mock.mock(`${url}api/login`, ret => {
+Mock.mock(/api\/login/, ret => {
   result.data = user
+  return result
+})
+
+// 获取待付款订单列表
+Mock.mock(/api\/listUnpayOrder/, ret => {
+  result.data = unpayOrderList.list
   return result
 })
