@@ -13,8 +13,9 @@
         </el-form-item>
       </el-form>
     </el-row>
-    <el-row class="toolbar t-a-r">
-      <el-button-group>
+    <el-row class="toolbar">
+      <el-button @click="add" size="mini" type="primary" icon="plus">新增</el-button>
+      <el-button-group class="vetically right-10">
         <el-button @click="query" size="mini" type="primary">查询</el-button>
         <el-button @click="refresh" size="mini" type="primary">刷新</el-button>
         <el-button @click="reset" size="mini" type="primary">重置</el-button>
@@ -74,6 +75,10 @@ export default {
         this.list = ret.data
         this.total = this.list.length
       }
+    },
+    // 新增
+    add(){
+      this.$router.push('unpayOrderAdd')
     },
     // 编辑
     edit() {

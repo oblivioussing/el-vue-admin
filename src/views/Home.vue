@@ -9,7 +9,7 @@
       <!-- 侧栏导航菜单 -->
       <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical scroll-beautify">
         <!-- 一级菜单 -->
-        <el-submenu v-if="!item.hidden" v-for="item in menus" :index="item.path" :key="item.path">
+        <el-submenu v-if="item.menu===true" v-for="item in menus" :index="item.path" :key="item.path">
           <template slot="title">
             <svg class="icon" aria-hidden="true">
               <use :xlink:href="'#icon-'+item.icon"></use>
@@ -17,7 +17,7 @@
             <span slot="title">{{item.title}}</span>
           </template>
           <!-- 二级菜单 -->
-          <el-menu-item v-if="!children.hidden" v-for="children in item.children" :index="children.path" :key="children.path">
+          <el-menu-item v-if="children.menu===true" v-for="children in item.children" :index="children.path" :key="children.path">
             {{children.title}}
           </el-menu-item>
         </el-submenu>

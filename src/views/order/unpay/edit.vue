@@ -57,7 +57,7 @@
 
 <script>
 export default {
-  name: 'unpayEdit',
+  name: 'unpayOrderEdit',
   data() {
     return {
       form: {}

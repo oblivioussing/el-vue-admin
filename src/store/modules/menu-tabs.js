@@ -75,12 +75,12 @@ const methods = {
       children.forEach(cItem => {
         const cPath = cItem.path
         const cTtile = cItem.title
-        const skip = path + 'List'
         let map = {}
         // path和title的映射
         cTtile ? map.title = cTtile : ''
         // path和skip的映射
         if (cPath.indexOf('List') < 0 && cPath !== '/') {
+          const skip = cPath.replace(/Add|Edit|View/, 'List')
           map.skip = skip
         }
         // path的父级路由的映射
