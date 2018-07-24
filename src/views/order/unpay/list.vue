@@ -26,12 +26,16 @@
         <el-table-column prop="orderTypeName" label="订单类型" align="center"></el-table-column>
         <el-table-column label="下单时间" align="center">
           <template slot-scope="scope">
-            <div>{{scope.row.createTime|fmtYYYYMMDD}}</div>
+            <div>{{scope.row.createTime|fmtDate}}</div>
           </template>
         </el-table-column>
         <el-table-column prop="buyerName" label="购买方名称" align="center"></el-table-column>
         <el-table-column prop="sellerName" label="销售方名称" align="center"></el-table-column>
-        <el-table-column prop="expireTime" label="订单有效期" align="center"></el-table-column>
+        <el-table-column label="订单有效期" align="center">
+          <template slot-scope="scope">
+            <div>{{scope.row.expireTime|fmtDate}}</div>
+          </template>
+        </el-table-column>
         <el-table-column label="操作" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button @click="edit(scope.row.id)" type="primary" size="small">编辑</el-button>
