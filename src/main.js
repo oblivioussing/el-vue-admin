@@ -12,6 +12,10 @@ import md5 from 'js-md5'
 // 插件使用
 Vue.use(ElementUI)
 
+// 全局指令和过滤器
+import './extension/filters'
+import './extension/directives'
+
 // iconfont引用
 import './assets/iconfont/iconfont'
 import './assets/iconfont/iconfont.css'

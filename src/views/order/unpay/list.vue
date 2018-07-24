@@ -24,7 +24,11 @@
       <el-table :data="list" border height="100%">
         <el-table-column prop="orderNo" label="订单编号" align="center"></el-table-column>
         <el-table-column prop="orderTypeName" label="订单类型" align="center"></el-table-column>
-        <el-table-column prop="createTime" label="下单时间" align="center"></el-table-column>
+        <el-table-column label="下单时间" align="center">
+          <template slot-scope="scope">
+            <div>{{scope.row.createTime|fmtYYYYMMDD}}</div>
+          </template>
+        </el-table-column>
         <el-table-column prop="buyerName" label="购买方名称" align="center"></el-table-column>
         <el-table-column prop="sellerName" label="销售方名称" align="center"></el-table-column>
         <el-table-column prop="expireTime" label="订单有效期" align="center"></el-table-column>
