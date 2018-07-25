@@ -33,6 +33,18 @@
       <el-form-item prop="buyerPhone" label="联系人电话:">
         <el-input v-model="form.buyerPhone"></el-input>
       </el-form-item>
+      <h1 class="form-title">销售方信息:</h1>
+      <el-form-item prop="sellerType" label="购买方类型:">
+        <el-select placeholder="请选择" v-model="form.sellerType">
+          <el-option v-for="(val,key) in sellerTypeMap" :key="key" :label="val" :value="key"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item prop="sellerName" label="联系人姓名:">
+        <el-input v-model="form.sellerName"></el-input>
+      </el-form-item>
+      <el-form-item prop="sellerPhone" label="联系人电话:">
+        <el-input v-model="form.sellerPhone"></el-input>
+      </el-form-item>
     </el-form>
     <el-footer>
       <el-row class="toolbar m-t-5 t-a-r">
@@ -51,7 +63,8 @@ export default {
       orderTypeMap: {},
       agencyGradeMap: {},
       orderStateMap: {},
-      buyerTypeMap: {}
+      buyerTypeMap: {},
+      sellerTypeMap: {}
     }
   },
   created() { },
