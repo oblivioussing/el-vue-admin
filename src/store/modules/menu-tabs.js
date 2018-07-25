@@ -5,9 +5,6 @@ const state = {
   tabs: [], // 顶部tab
   actived: '', // 需要激活的path
   pathMap: {}, // 路由映射
-  pathTitleMap: {}, // path和title的映射
-  pathSkipMap: {}, // path和skip的映射
-  pathTierMap: {}, // path层级的映射
   exclude: '' // 销毁的路由组件
 }
 
