@@ -1,5 +1,4 @@
 @import './mixin.scss';
-
 html,
 body {
   overflow: hidden;
@@ -28,4 +27,9 @@ body {
 
 .toolbar.search {
   padding-bottom: 0 !important;
+}
+
+.toolbar.footer {
+  margin-top: 5px;
+  text-align: right;
 }

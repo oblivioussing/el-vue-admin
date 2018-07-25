@@ -30,12 +30,12 @@ import './styles/reset.css'
 import './mock'
 import core from '@/utils/core'
 import request from '@/utils/request'
-import dict from '@/config/dict'
+import { globalDict } from '@/config/dict'
 
 // 全局变量
 window.$core = core
 window.$request = request
-window.$dict = dict
+window.$dict = globalDict
 window.moment = moment
 window.md5 = md5
 

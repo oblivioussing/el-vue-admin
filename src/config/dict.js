@@ -1,14 +1,12 @@
-// 接口状态
-const apiStateMap = {
+// 全局字典
+const globalDict = {
+  /**接口状态**/
   success: '10', // 成功
   authFail: '11', // 权限认证失败
   noLogin: '12', // 未登录
   longinExpire: '13', // 登陆超时
-  locked: '14' // 用户被锁定
-}
-
-// 文件类型
-const fileTypeMap = {
+  locked: '14', // 用户被锁定
+  /**文件类型**/
   pic: '10', // 图片
   video: '11', // 视频
   audio: '12', // 音频
@@ -20,6 +18,9 @@ const fileTypeMap = {
   zip: '18' // 压缩包
 }
 
-const dict = Object.assign(apiStateMap, fileTypeMap)
+// 本地字典
+const localDict = {
 
-export default dict
+}
+
+export { globalDict, localDict }
