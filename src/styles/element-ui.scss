@@ -29,6 +29,15 @@
   }
 }
 
+// input宽度
+.el-input {
+  width: 203px;
+}
+// 时间选择器宽度
+.el-date-editor {
+  width: 203px !important;
+}
+
 // tabs选项卡
 .el-tabs {
   .el-tabs__header {

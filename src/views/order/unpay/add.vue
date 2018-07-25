@@ -17,6 +17,22 @@
           <el-option v-for="(val,key) in orderStateMap" :key="key" :label="val" :value="key"></el-option>
         </el-select>
       </el-form-item>
+      <el-form-item prop="payTime" label="订单有效期:">
+        <el-date-picker v-model="form.payTime" value-format="timestamp" type="date" placeholder="请选择">
+        </el-date-picker>
+      </el-form-item>
+      <h1 class="form-title">购买方信息:</h1>
+      <el-form-item prop="buyerType" label="购买方类型:">
+        <el-select placeholder="请选择" v-model="form.buyerType">
+          <el-option v-for="(val,key) in buyerTypeMap" :key="key" :label="val" :value="key"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item prop="buyerName" label="联系人姓名:">
+        <el-input v-model="form.buyerName"></el-input>
+      </el-form-item>
+      <el-form-item prop="buyerPhone" label="联系人电话:">
+        <el-input v-model="form.buyerPhone"></el-input>
+      </el-form-item>
     </el-form>
     <el-footer>
       <el-row class="toolbar m-t-5 t-a-r">
@@ -34,7 +50,8 @@ export default {
       form: {},
       orderTypeMap: {},
       agencyGradeMap: {},
-      orderStateMap: {}
+      orderStateMap: {},
+      buyerTypeMap: {}
     }
   },
   created() { },

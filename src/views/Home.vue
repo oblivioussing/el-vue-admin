@@ -7,7 +7,7 @@
         <img v-show="!isCollapse" class="gravity-center" src="../assets/img/test/logo_large.svg">
       </div>
       <!-- 侧栏导航菜单 -->
-      <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical scroll-beautify">
+      <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical">
         <!-- 一级菜单 -->
         <el-submenu v-if="item.menu===true" v-for="item in menus" :index="item.path" :key="item.path">
           <template slot="title">
@@ -93,12 +93,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/mixin.scss";
+
 .el-menu-header {
   height: 60px;
   position: relative;
   width: 100%;
 }
 .el-menu-vertical {
+  @include scroll-beautify;
   height: calc(100vh - 60px);
 }
 .el-menu-vertical:not(.el-menu--collapse) {
