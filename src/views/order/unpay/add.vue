@@ -26,7 +26,7 @@
     </el-form>
     <el-footer>
       <el-row class="toolbar footer">
-        <el-button type="primary" size="mini">保存</el-button>
+        <el-button @click="save" type="primary" size="mini">保存</el-button>
       </el-row>
     </el-footer>
   </el-container>
@@ -48,7 +48,10 @@ export default {
     }
   },
   methods: {
-
+    // 保存
+    save() {
+      this.$store.commit('menuTabs/removeTab', 'unpayOrderAdd')
+    }
   }
 }
 </script>
