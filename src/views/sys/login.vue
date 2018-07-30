@@ -78,6 +78,9 @@ export default {
     margin: 0px auto 40px auto;
     text-align: center;
   }
+  .el-input{
+    width: 100%;
+  }
   .remember {
     margin: 0px 0px 35px 0px;
   }
