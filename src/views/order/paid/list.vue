@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-row class="toolbar">
+    <el-row class="toolbar search">
       <el-form :inline="true" :model="form" size="mini">
         <el-form-item label="商品名称:">
           <el-input v-model="form.name"></el-input>

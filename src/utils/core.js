@@ -1,3 +1,5 @@
+import { resolve } from "url";
+
 let ls = localStorage
 let ss = sessionStorage
 
@@ -54,6 +56,14 @@ const core = {
     } else if (v.indexOf('str-') === 0) {
       return v.slice(4)
     }
+  },
+  // 睡眠
+  sleep(time){
+    return new Promise(resolve=>{
+      setTimeout(() => {
+        resolve()
+      }, time)
+    })
   },
   // 时间转为刚刚、几分钟前、几小时前
   timeRelative(stamp) {
