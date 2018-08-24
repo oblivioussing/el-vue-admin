@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 //vue自定义指令
-;(() => {
+(() => {
   // table滚动到底部
   Vue.directive('tableScrollBottom', {
     bind(el, binding) {

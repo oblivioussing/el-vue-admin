@@ -6,28 +6,22 @@ import store from './store'
 // 模块引用
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import moment from 'moment'
 import md5 from 'js-md5'
 
 // 插件使用
 Vue.use(ElementUI)
 
-// 全局指令和过滤器
-import './extension/filters'
-import './extension/directives'
-
 // iconfont引用
 import './assets/iconfont/iconfont'
 import './assets/iconfont/iconfont.css'
 
-// 样式引用
-import './styles/base.scss'
-import './styles/core.scss'
-import './styles/element-ui.scss'
-import './styles/reset.css'
+// 全局指令和过滤器
+import '@/extension/filters'
+import '@/extension/directives'
 
 // js文件引用
-import './mock'
+import '@/mock'
+import '@/utils/warden'
 import core from '@/utils/core'
 import request from '@/utils/request'
 import { globalDict } from '@/config/dict'
@@ -36,31 +30,13 @@ import { globalDict } from '@/config/dict'
 window.$core = core
 window.$request = request
 window.$dict = globalDict
-window.moment = moment
 window.md5 = md5
 
-// 全局路由前置守卫
-router.beforeEach((to, from, next) => {
-  // 用户信息
-  const userInfo = store.state.user.userInfo
-  if (!userInfo.token && to.path !== '/login') {
-    next('/login')
-  } else {
-    // 通知menuTabs路由变化
-    store.commit('menuTabs/routerChange', to)
-    // resolve钩子
-    next()
-  }
-})
-
-// ui自适应
-import adapter from '@/utils/adapter'
-
-// 全局路由后置钩子
-router.afterEach((to, from) => {
-  // ui自适应初始化
-  adapter.init()
-})
+// 样式引用
+import './styles/base.scss';
+import './styles/core.scss';
+import './styles/element-ui.scss';
+import './styles/reset.css';
 
 Vue.config.productionTip = false
 
