@@ -71,13 +71,13 @@ export default {
     // 获取列表
     async getlist() {
       const ret = await $request.get('api/listUnpayOrder', this.form)
-      if (ret.code = $dict.success) {
+      if ($core.isSuccess(ret)) {
         this.list = ret.data
         this.total = this.list.length
       }
     },
     // 新增
-    add(){
+    add() {
       this.$router.push('unpayOrderAdd')
     },
     // 编辑

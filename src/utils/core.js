@@ -58,12 +58,16 @@ const core = {
     }
   },
   // 睡眠
-  sleep(time){
-    return new Promise(resolve=>{
+  sleep(time) {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve()
       }, time)
     })
+  },
+  // 请求是否成功
+  isSuccess(ret) {
+    return ret.code === $dict.success
   },
   // 时间转为刚刚、几分钟前、几小时前
   timeRelative(stamp) {

@@ -28,7 +28,12 @@ const mutations = {
     // 判断该路由是否已经存在
     const exist = state.tabs.some(item => item.path === path)
     // 不存在就添加一个tab
-    !exist && methods.addTab(to)
+    if (!exist) {
+      const path = to.path
+      const pathMap = state.pathMap[path]
+      const title = pathMap && pathMap.title
+      title && state.tabs.push({ path, title })
+    }
   },
   // 关闭一个tab
   removeTab(state, path, jump = true) {
@@ -44,7 +49,6 @@ const mutations = {
     const skip = pathMap && pathMap.skip
     state.actived = skip || actived
     state.exclude = path.substr(1)
-    $core.setSession('menuTabs', state.tabs)
     // 路由跳转
     jump && router.push(state.actived)
   }
@@ -57,8 +61,6 @@ const methods = {
     state.menus = router.options.routes
     // 初始化路由映射
     this.pathMapInit()
-    // 从缓存中获取tabs
-    state.tabs = $core.getSession('menuTabs') || []
   },
   // 初始化路由映射
   pathMapInit() {
@@ -86,14 +88,6 @@ const methods = {
         state.pathMap[cPath] = map
       })
     })
-  },
-  // 添加一个tab
-  addTab(to) {
-    const path = to.path
-    const pathMap = state.pathMap[path]
-    const title = pathMap && pathMap.title
-    title && state.tabs.push({ path, title })
-    $core.setSession('menuTabs', state.tabs)
   }
 }
 

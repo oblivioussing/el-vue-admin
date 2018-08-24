@@ -49,7 +49,7 @@ export default {
         formTemp.pwd = md5(formTemp.pwd)
         const ret = await $request.post('api/login', formTemp)
         this.loading = false
-        if (ret.code === $dict.success) {
+        if ($core.isSuccess(ret)) {
           this.$store.commit('user/saveUserInfo', ret.data)
           this.$router.replace({ path: '/' })
         } else {
@@ -78,7 +78,7 @@ export default {
     margin: 0px auto 40px auto;
     text-align: center;
   }
-  .el-input{
+  .el-input {
     width: 100%;
   }
   .remember {
