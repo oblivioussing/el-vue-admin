@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import md5 from 'js-md5'
+
 export default {
   name: 'login',
   data () {
@@ -47,9 +49,9 @@ export default {
         this.loading = true
         let formTemp = JSON.parse(JSON.stringify(this.form))
         formTemp.pwd = md5(formTemp.pwd)
-        const ret = await $request.post('api/login', formTemp)
+        const ret = await this.$request.post('api/login', formTemp)
         this.loading = false
-        if ($core.isSuccess(ret)) {
+        if (this.$core.isSuccess(ret)) {
           this.$store.commit('user/saveUserInfo', ret.data)
           this.$router.replace({ path: '/' })
         } else {

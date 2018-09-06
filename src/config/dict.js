@@ -1,5 +1,7 @@
+import Vue from 'vue'
+
 // 全局字典
-const globalDict = {
+const dict = {
   /** 接口状态**/
   success: '10', // 成功
   authFail: '11', // 权限认证失败
@@ -18,9 +20,4 @@ const globalDict = {
   zip: '18' // 压缩包
 }
 
-// 本地字典
-const localDict = {
-
-}
-
-export { globalDict, localDict }
+Vue.prototype.$dict = dict

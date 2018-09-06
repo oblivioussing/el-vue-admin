@@ -16,7 +16,7 @@ const adapter = {
   // 加载自适应方法
   async carry () {
     // 等待100ms
-    await $core.sleep(100)
+    await this.$core.sleep(100)
     // 列表容器自适应
     this.listAdapter()
     // 表单容器高度自适应

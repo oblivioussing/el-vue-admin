@@ -1,4 +1,4 @@
-import { resolve } from 'url'
+import Vue from 'vue'
 
 let ls = localStorage
 let ss = sessionStorage
@@ -67,7 +67,7 @@ const core = {
   },
   // 请求是否成功
   isSuccess (ret) {
-    return ret.code === $dict.success
+    return ret.code === this.$dict.success
   },
   // 时间转为刚刚、几分钟前、几小时前
   timeRelative (stamp) {
@@ -103,4 +103,4 @@ const core = {
   }
 }
 
-export default core
+Vue.prototype.$core = core
