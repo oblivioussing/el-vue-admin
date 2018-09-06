@@ -18,4 +18,4 @@ if (nodeEnv === 'production' && !stage) {
 
 const url = urlMap[stage]
 
-export default { url }
+export default url

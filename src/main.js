@@ -14,13 +14,14 @@ import './assets/iconfont/iconfont.css'
 // 全局js文件
 import '@/extension/filters' // 指令
 import '@/extension/directives' // 过滤器
+import '@/extension/warden' // 路由守卫
 import '@/config/dict' // 字典
 import '@/utils/core' // core
-import '@/utils/request' // request
+import '@/api/request' // request
+import '@/api/interceptors' // 请求拦截
 
 // js文件引用
 import '@/mock' // mock
-import '@/utils/warden' // 路由守卫
 
 // 样式引用
 import './styles/base.scss'
