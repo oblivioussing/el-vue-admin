@@ -19,7 +19,7 @@
 <script>
 export default {
   name: 'login',
-  data() {
+  data () {
     return {
       form: {
         loginName: 'admin',
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     // 登陆
-    login(ev) {
+    login (ev) {
       this.$refs.form.validate(async valid => {
         if (!valid) {
           return

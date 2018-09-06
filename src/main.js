@@ -8,9 +8,6 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import md5 from 'js-md5'
 
-// 插件使用
-Vue.use(ElementUI)
-
 // iconfont引用
 import './assets/iconfont/iconfont'
 import './assets/iconfont/iconfont.css'
@@ -26,17 +23,20 @@ import core from '@/utils/core'
 import request from '@/utils/request'
 import { globalDict } from '@/config/dict'
 
+// 样式引用
+import './styles/base.scss'
+import './styles/core.scss'
+import './styles/element-ui.scss'
+import './styles/reset.css'
+
+// 插件使用
+Vue.use(ElementUI)
+
 // 全局变量
 window.$core = core
 window.$request = request
 window.$dict = globalDict
 window.md5 = md5
-
-// 样式引用
-import './styles/base.scss';
-import './styles/core.scss';
-import './styles/element-ui.scss';
-import './styles/reset.css';
 
 Vue.config.productionTip = false
 

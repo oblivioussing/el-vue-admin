@@ -40,13 +40,13 @@
 <script>
 export default {
   name: 'goodsList',
-  data() {
+  data () {
     return {
       form: {},
       list: []
     }
   },
-  created() {
+  created () {
     for (let i = 0; i < 15; i++) {
       this.list.push(
         {
@@ -59,20 +59,20 @@ export default {
   },
   methods: {
     // 获取列表
-    getlist() {
+    getlist () {
 
     },
     // 新增
-    add() {
+    add () {
       this.$router.push('goodsAdd')
     },
     // page改变时
-    currentChange(page) {
+    currentChange (page) {
       this.form.page = page
       this.getlist()
     },
     // size改变时
-    sizeChange(size) {
+    sizeChange (size) {
       this.form.size = size
       this.getlist()
     }

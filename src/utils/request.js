@@ -10,7 +10,7 @@ const url = apiUrl.url
 
 const request = {
   // get请求
-  async get(path, params) {
+  async get (path, params) {
     const config = {
       method: 'get',
       url: url + path,
@@ -19,7 +19,7 @@ const request = {
     return await request.request(config)
   },
   // post请求
-  async post(path, params) {
+  async post (path, params) {
     const config = {
       method: 'post',
       url: url + path,
@@ -28,7 +28,7 @@ const request = {
     return await request.request(config)
   },
   // 上传文件
-  async upFile(path, params) {
+  async upFile (path, params) {
     const config = {
       method: 'post',
       headers: { 'Content-Type': 'multipart/form-data' },
@@ -38,7 +38,7 @@ const request = {
     return await request.request(config)
   },
   // 发起请求
-  request(config) {
+  request (config) {
     return new Promise(resolve => {
       axios(config)
         .then(ret => {

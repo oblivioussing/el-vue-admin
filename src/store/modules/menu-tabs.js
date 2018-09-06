@@ -10,7 +10,7 @@ const state = {
 
 const getters = {
   // 当前路由的父级path
-  stair(state) {
+  stair (state) {
     const pathMap = state.pathMap[state.actived]
     return pathMap && pathMap.parentPath
   }
@@ -18,7 +18,7 @@ const getters = {
 
 const mutations = {
   // 路由变化
-  routerChange(state, to) {
+  routerChange (state, to) {
     const path = to.path
     state.actived = path
     // 如果没有数据就先初始化
@@ -36,7 +36,7 @@ const mutations = {
     }
   },
   // 关闭一个tab
-  removeTab(state, path, jump = true) {
+  removeTab (state, path, jump = true) {
     const index = state.tabs.findIndex(item => item.path === path)
     state.tabs.splice(index, 1)
     let actived
@@ -56,14 +56,14 @@ const mutations = {
 
 const methods = {
   // 初始化菜单
-  init() {
+  init () {
     // 菜单列表
     state.menus = router.options.routes
     // 初始化路由映射
     this.pathMapInit()
   },
   // 初始化路由映射
-  pathMapInit() {
+  pathMapInit () {
     const menus = state.menus
     menus.forEach(item => {
       const path = item.path

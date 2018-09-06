@@ -1,9 +1,9 @@
 const state = {
-  userInfo: {}  // 用户信息
+  userInfo: {} // 用户信息
 }
 const mutations = {
   // 保存用户信息
-  saveUserInfo(state, obj) {
+  saveUserInfo (state, obj) {
     state.userInfo = obj
   }
 }

@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 const adapter = {
   // 初始化
-  init() {
+  init () {
     const vue = new Vue()
     vue.$nextTick(async () => {
       // 加载自适应方法
@@ -14,7 +14,7 @@ const adapter = {
     }
   },
   // 加载自适应方法
-  async carry() {
+  async carry () {
     // 等待100ms
     await $core.sleep(100)
     // 列表容器自适应
@@ -23,7 +23,7 @@ const adapter = {
     this.formAdapter()
   },
   // 列表容器自适应
-  listAdapter() {
+  listAdapter () {
     let containerEl = document.querySelector('.list-container')
     if (containerEl) {
       const searchEl = document.querySelector('.toolbar.search')
@@ -32,7 +32,7 @@ const adapter = {
     }
   },
   // 表单容器高度自适应
-  formAdapter() {
+  formAdapter () {
     let containerEl = document.querySelector('.form-container')
     if (containerEl) {
       containerEl.style.height = 'calc(100vh - 180px)'

@@ -55,9 +55,9 @@ import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'home',
-  data() {
+  data () {
     return {
-      isCollapse: false, // 是否折叠菜单
+      isCollapse: false // 是否折叠菜单
     }
   },
   computed: {
@@ -72,20 +72,20 @@ export default {
     })
   },
   methods: {
-    //菜单切换
-    menuSelect(path) {
+    // 菜单切换
+    menuSelect (path) {
       this.$router.push(path)
     },
     // 菜单收缩和展开切换
-    collapseToggle() {
+    collapseToggle () {
       this.isCollapse = !this.isCollapse
     },
-    //tab切换
-    tab(obj) {
+    // tab切换
+    tab (obj) {
       this.$router.push(obj.name)
     },
-    //关闭tab
-    removeTab(name) {
+    // 关闭tab
+    removeTab (name) {
       this.$store.commit('menuTabs/removeTab', name)
     }
   }

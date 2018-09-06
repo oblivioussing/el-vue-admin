@@ -35,7 +35,7 @@
 <script>
 export default {
   name: 'unpayOrderAdd',
-  data() {
+  data () {
     return {
       form: {},
       orderTypeMap: {
@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     // 保存
-    save() {
+    save () {
       this.$store.commit('menuTabs/removeTab', 'unpayOrderAdd')
     }
   }

@@ -25,7 +25,7 @@ export default new Router({
     {
       path: '/login',
       hidden: true,
-      component: login,
+      component: login
     },
     {
       path: '/',

@@ -56,20 +56,20 @@
 <script>
 export default {
   name: 'unpayOrderList',
-  data() {
+  data () {
     return {
       form: {},
       list: [],
       total: 0
     }
   },
-  created() {
+  created () {
     // 获取列表
     this.getlist()
   },
   methods: {
     // 获取列表
-    async getlist() {
+    async getlist () {
       const ret = await $request.get('api/listUnpayOrder', this.form)
       if ($core.isSuccess(ret)) {
         this.list = ret.data
@@ -77,34 +77,34 @@ export default {
       }
     },
     // 新增
-    add() {
+    add () {
       this.$router.push('unpayOrderAdd')
     },
     // 编辑
-    edit() {
+    edit () {
 
     },
-    //查询
-    query() {
+    // 查询
+    query () {
       this.getlist()
     },
-    //刷新
-    refresh() {
+    // 刷新
+    refresh () {
       this.reset()
       this.getlist()
     },
-    //重置
-    reset() {
+    // 重置
+    reset () {
       const [page, size] = [1, 10]
       this.form = { page, size }
     },
     // page改变时
-    currentChange(page) {
+    currentChange (page) {
       this.form.page = page
       this.getlist()
     },
     // size改变时
-    sizeChange(size) {
+    sizeChange (size) {
       this.form.size = size
       this.getlist()
     }

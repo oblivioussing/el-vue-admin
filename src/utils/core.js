@@ -1,17 +1,17 @@
-import { resolve } from "url";
+import { resolve } from 'url'
 
 let ls = localStorage
 let ss = sessionStorage
 
 const core = {
   // 添加localStorage
-  setLocal(key, value) {
+  setLocal (key, value) {
     let v = value
-    v = typeof v == 'object' ? 'obj-' + JSON.stringify(v) : 'str-' + v
+    v = typeof v === 'object' ? 'obj-' + JSON.stringify(v) : 'str-' + v
     ls && ls.setItem(key, v)
   },
   // 获取localStorage
-  getLocal(key) {
+  getLocal (key) {
     let v = ls.getItem(key)
     if (v) {
       v = core.getStorageValue(v)
@@ -19,13 +19,13 @@ const core = {
     }
   },
   // 添加session
-  setSession(key, value) {
+  setSession (key, value) {
     let v = value
-    v = typeof v == 'object' ? 'obj-' + JSON.stringify(v) : 'str-' + v
+    v = typeof v === 'object' ? 'obj-' + JSON.stringify(v) : 'str-' + v
     ss.setItem(key, v)
   },
   // 获取session
-  getSession(key) {
+  getSession (key) {
     let v = ss.getItem(key)
     if (v) {
       v = core.getStorageValue(v)
@@ -33,23 +33,23 @@ const core = {
     }
   },
   // 清空某个localStorage
-  rmLocal(key) {
+  rmLocal (key) {
     key && ls.removeItem(key)
   },
   // 清空所有localStorage
-  clearLocal() {
+  clearLocal () {
     ls.clear()
   },
   // 清空某个session
-  rmSession(key) {
+  rmSession (key) {
     key && ss.removeItem(key)
   },
   // 清空所有session
-  clearSession() {
+  clearSession () {
     ss.clear()
   },
   // 获取值
-  getStorageValue(v) {
+  getStorageValue (v) {
     if (v.indexOf('obj-') === 0) {
       v = v.slice(4)
       return JSON.parse(v)
@@ -58,7 +58,7 @@ const core = {
     }
   },
   // 睡眠
-  sleep(time) {
+  sleep (time) {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve()
@@ -66,11 +66,11 @@ const core = {
     })
   },
   // 请求是否成功
-  isSuccess(ret) {
+  isSuccess (ret) {
     return ret.code === $dict.success
   },
   // 时间转为刚刚、几分钟前、几小时前
-  timeRelative(stamp) {
+  timeRelative (stamp) {
     const minute = 1000 * 60
     const hour = minute * 60
     const day = hour * 24
