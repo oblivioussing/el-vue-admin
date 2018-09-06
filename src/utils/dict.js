@@ -1,6 +1,3 @@
-import Vue from 'vue'
-
-// 全局字典
 const dict = {
   /** 接口状态**/
   success: '10', // 成功
@@ -21,4 +18,4 @@ const dict = {
   zip: '18' // 压缩包
 }
 
-Vue.prototype.$dict = dict
+export default dict

@@ -30,6 +30,10 @@ const mutations = {
     // 不存在就添加一个tab
     if (!exist) {
       const path = to.path
+      // 如果为根目录则清空tabs
+      if (path === '/') {
+        state.tabs = []
+      }
       const pathMap = state.pathMap[path]
       const title = pathMap && pathMap.title
       title && state.tabs.push({ path, title })
@@ -76,7 +80,7 @@ const methods = {
         const cTtile = cItem.title
         let map = {}
         // path和title的映射
-        cTtile ? map.title = cTtile : ''
+        map.title = cTtile || ''
         // path和skip的映射
         if (cPath.indexOf('List') < 0 && cPath !== '/') {
           const skip = cPath.replace(/Add|Edit|View/, 'List')

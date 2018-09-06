@@ -64,7 +64,6 @@ export default {
     },
     // 新增
     add () {
-      this.$router.push('goodsAdd')
     },
     // page改变时
     currentChange (page) {

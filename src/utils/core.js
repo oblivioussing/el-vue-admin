@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import dict from './dict'
 
 let ls = localStorage
 let ss = sessionStorage
@@ -67,7 +68,7 @@ const core = {
   },
   // 请求是否成功
   isSuccess (ret) {
-    return ret.code === this.$dict.success
+    return ret.code === dict.success
   },
   // 时间转为刚刚、几分钟前、几小时前
   timeRelative (stamp) {

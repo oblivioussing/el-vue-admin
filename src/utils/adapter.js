@@ -4,7 +4,7 @@ const adapter = {
   // 初始化
   init () {
     const vue = new Vue()
-    vue.$nextTick(async () => {
+    vue.$nextTick(() => {
       // 加载自适应方法
       this.carry()
     })
@@ -14,13 +14,14 @@ const adapter = {
     }
   },
   // 加载自适应方法
-  async carry () {
+  carry () {
     // 等待100ms
-    await this.$core.sleep(100)
-    // 列表容器自适应
-    this.listAdapter()
-    // 表单容器高度自适应
-    this.formAdapter()
+    setTimeout(() => {
+      // 列表容器自适应
+      this.listAdapter()
+      // 表单容器高度自适应
+      this.formAdapter()
+    }, 100)
   },
   // 列表容器自适应
   listAdapter () {
