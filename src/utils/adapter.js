@@ -15,7 +15,7 @@ const adapter = {
   },
   // 加载自适应方法
   carry () {
-    // 等待100ms
+    // 等待200ms
     setTimeout(() => {
       // 列表容器自适应
       this.listAdapter()
@@ -27,6 +27,7 @@ const adapter = {
   listAdapter () {
     let containerEl = document.querySelector('.list-container')
     if (containerEl) {
+      // 筛选框
       const searchEl = document.querySelector('.toolbar.search')
       const searchH = searchEl ? searchEl.offsetHeight : 0
       containerEl.style.height = `calc(100vh - 216px - ${searchH}px)`
