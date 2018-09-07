@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: 'goodsList',
+  name: 'paidOrderList',
   data () {
     return {
       form: {},

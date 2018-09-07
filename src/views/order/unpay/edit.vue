@@ -37,7 +37,20 @@ export default {
   name: 'unpayOrderEdit',
   data () {
     return {
-      form: {}
+      form: {},
+      orderTypeMap: {
+        10: '已付款',
+        11: '未付款'
+      },
+      rules: {
+        orderType: [{ required: true, message: '请选择活动区域', trigger: 'change' }]
+      }
+    }
+  },
+  methods: {
+    // 保存
+    save () {
+      this.$store.commit('menuTabs/removeTab', 'unpayOrderEdit')
     }
   }
 }

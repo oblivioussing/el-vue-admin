@@ -6,6 +6,8 @@ import store from './store'
 // 模块引用
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import contentmenu from 'v-contextmenu'
+import 'v-contextmenu/dist/index.css'
 
 // iconfont引用
 import './assets/iconfont/iconfont'
@@ -25,6 +27,7 @@ import '@/mock' // mock
 
 // 插件使用
 Vue.use(ElementUI)
+Vue.use(contentmenu)
 
 Vue.config.productionTip = false
 

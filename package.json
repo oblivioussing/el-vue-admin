@@ -12,6 +12,7 @@
     "element-ui": "^2.4.4",
     "js-md5": "^0.7.3",
     "moment": "^2.22.2",
+    "v-contextmenu": "^2.8.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",

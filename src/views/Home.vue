@@ -34,9 +34,15 @@
       <!-- tab选项卡 -->
       <el-row class="el-tabs-container">
         <el-tabs v-show="tabs.length" @tab-click="tab" @tab-remove="removeTab" :value="actived" closable type="card">
-          <el-tab-pane v-for="item in tabs" :key="item.path" :label="item.title" :name="item.path">
+          <el-tab-pane v-for="item in tabs" :key="item.path" :name="item.path">
+            <span slot="label" v-contextmenu:contextmenu @contextmenu="contextmenu(item.path)">{{item.title}}</span>
           </el-tab-pane>
         </el-tabs>
+        <v-contextmenu ref="contextmenu">
+          <v-contextmenu-item @click="closeTab">关闭</v-contextmenu-item>
+          <v-contextmenu-item @click="closeTabOther">关闭其他</v-contextmenu-item>
+          <v-contextmenu-item @click="closeTabAll">关闭全部</v-contextmenu-item>
+        </v-contextmenu>
       </el-row>
       <!-- 内容展示区 -->
       <el-main class="h-100">
@@ -57,7 +63,8 @@ export default {
   name: 'home',
   data () {
     return {
-      isCollapse: false // 是否折叠菜单
+      isCollapse: false, // 是否折叠菜单
+      contextmenuPath: '' // 鼠标右键选中的path
     }
   },
   computed: {
@@ -87,6 +94,22 @@ export default {
     // 关闭tab
     removeTab (name) {
       this.$store.commit('menuTabs/removeTab', name)
+    },
+    // 关闭当前tab
+    closeTab () {
+      this.removeTab(this.contextmenuPath)
+    },
+    // 关闭其他tab
+    closeTabOther () {
+      this.$store.commit('menuTabs/removeTabOther', this.contextmenuPath)
+    },
+    // 关闭所有tab
+    closeTabAll () {
+      this.$store.commit('menuTabs/removeTabAll')
+    },
+    // 菜单显示时触发
+    contextmenu (path) {
+      this.contextmenuPath = path
     }
   }
 }
