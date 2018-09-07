@@ -1,53 +1,32 @@
 <template>
   <el-container>
-    <el-form ref="form" :model="form" size="small" label-width="100px" class="form-container">
-      <h1 class="form-title">基本信息</h1>
-      <el-form-item label="活动名称">
-        <el-input v-model="form.name"></el-input>
-      </el-form-item>
-      <el-form-item label="活动区域">
-        <el-select v-model="form.region" placeholder="请选择活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
+    <el-form ref="form" :model="form" :rules="rules" size="small" :inline="true" label-width="100px" class="form-container">
+      <h1 class="form-title">订单信息:</h1>
+      <el-form-item prop="orderType" label="订单类型:">
+        <el-select v-model="form.orderType" placeholder="请选择">
+          <el-option v-for="(val,key) in orderTypeMap" :key="key" :label="val" :value="key"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="活动时间">
-        <el-col :span="11">
-          <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-        </el-col>
-        <el-col class="line" :span="2">-</el-col>
-        <el-col :span="11">
-          <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
-        </el-col>
+      <el-form-item label="订单有效期:">
+        <el-date-picker v-model="form.payTime" value-format="timestamp" type="date" placeholder="请选择">
+        </el-date-picker>
       </el-form-item>
-      <el-form-item label="即时配送">
-        <el-switch v-model="form.delivery"></el-switch>
+      <h1 class="form-title">购买方信息:</h1>
+      <el-form-item prop="sellerName" label="购买方:">
+        <el-input v-model="form.sellerName">
+          <el-button slot="append" icon="el-icon-search"></el-button>
+        </el-input>
       </el-form-item>
-      <el-form-item label="活动性质">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-          <el-checkbox label="地推活动" name="type"></el-checkbox>
-          <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-          <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
-        </el-checkbox-group>
+      <el-form-item prop="buyerName" label="联系人姓名:">
+        <el-input v-model="form.buyerName"></el-input>
       </el-form-item>
-      <el-form-item v-for="item in 10" :key="item" label="特殊资源">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="线上品牌商赞助"></el-radio>
-          <el-radio label="线下场地免费"></el-radio>
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item label="活动形式">
-        <el-input type="textarea" v-model="form.desc"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary">立即创建</el-button>
-        <el-button>取消</el-button>
+      <el-form-item prop="buyerPhone" label="联系人电话:">
+        <el-input v-model="form.buyerPhone"></el-input>
       </el-form-item>
     </el-form>
     <el-footer>
-      <el-row class="toolbar m-t-5 t-a-r">
-        <el-button type="primary" size="mini">保存</el-button>
+      <el-row class="toolbar footer">
+        <el-button @click="save" type="primary" size="mini">保存</el-button>
       </el-row>
     </el-footer>
   </el-container>
