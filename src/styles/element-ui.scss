@@ -1,6 +1,6 @@
 // 默认布局
 .el-header {
-  background-color: #409EFF;
+  background-color: #409eff;
   color: #333;
   text-align: center;
   line-height: 60px;
@@ -30,12 +30,14 @@
 }
 
 // input宽度
-.el-input {
-  width: 203px;
-}
-// 时间选择器宽度
-.el-date-editor {
-  width: 203px !important;
+.form-container {
+  .el-input {
+    width: 203px !important;
+  }
+  // 时间选择器宽度
+  .el-date-editor {
+    width: 203px !important;
+  }
 }
 
 // tabs选项卡
@@ -53,7 +55,11 @@
 }
 
 // 表格
-.el-table th{
-  background-color: #409EFF;
+.el-table {
+  text-align: center;
+}
+.el-table th {
+  background-color: #409eff !important;
   color: #fff;
+  text-align: center !important;
 }

@@ -40,7 +40,7 @@
       </el-row>
       <!-- 内容展示区 -->
       <el-main class="h-100">
-        <transition name="fade">
+        <transition>
           <keep-alive :exclude="exclude">
             <router-view/>
           </keep-alive>
@@ -114,13 +114,5 @@ export default {
 }
 .el-tabs-container {
   padding: 5px 5px 0 5px;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>

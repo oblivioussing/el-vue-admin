@@ -21,7 +21,7 @@ const adapter = {
       this.listAdapter()
       // 表单容器高度自适应
       this.formAdapter()
-    }, 100)
+    }, 200)
   },
   // 列表容器自适应
   listAdapter () {
@@ -29,14 +29,14 @@ const adapter = {
     if (containerEl) {
       const searchEl = document.querySelector('.toolbar.search')
       const searchH = searchEl ? searchEl.offsetHeight : 0
-      containerEl.style.height = `calc(100vh - 221px - ${searchH}px)`
+      containerEl.style.height = `calc(100vh - 216px - ${searchH}px)`
     }
   },
   // 表单容器高度自适应
   formAdapter () {
     let containerEl = document.querySelector('.form-container')
     if (containerEl) {
-      containerEl.style.height = 'calc(100vh - 180px)'
+      containerEl.style.height = 'calc(100vh - 158px)'
     }
   }
 }
