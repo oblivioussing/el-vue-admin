@@ -93,7 +93,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/mixin.scss";
+@import '../styles/mixin.scss';
 
 .el-menu-header {
   height: 60px;
@@ -114,5 +114,13 @@ export default {
 }
 .el-tabs-container {
   padding: 5px 5px 0 5px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
