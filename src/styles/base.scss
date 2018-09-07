@@ -12,7 +12,7 @@ body {
 
 // 表单title
 .form-title {
-  color: #181A1C;
+  color: #181a1c;
   font-size: 18px;
   margin-top: 10px;
   padding-bottom: 10px;
@@ -32,4 +32,11 @@ body {
 .toolbar.footer {
   margin-top: 5px;
   text-align: right;
+}
+
+// 表格超链接
+.table-link {
+  color: #409eff;
+  cursor: pointer;
+  text-decoration: underline;
 }

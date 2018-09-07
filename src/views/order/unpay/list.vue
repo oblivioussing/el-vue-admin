@@ -26,7 +26,11 @@
     <!-- 列表 -->
     <el-container class="list-container">
       <el-table :data="list" border height="100%">
-        <el-table-column prop="orderNo" label="订单编号"></el-table-column>
+        <el-table-column label="订单编号">
+          <template slot-scope="scope">
+            <div @click="detail(scope.row.orderNo)" class="table-link">{{scope.row.orderNo}}</div>
+          </template>
+        </el-table-column>
         <el-table-column prop="orderTypeName" label="订单类型"></el-table-column>
         <el-table-column label="下单时间">
           <template slot-scope="scope">{{scope.row.createTime|fmtDate}}</template>
@@ -83,6 +87,10 @@ export default {
     // 编辑
     edit () {
       this.$router.push('unpayOrderEdit')
+    },
+    // 详情
+    detail () {
+      this.$router.push('unpayOrderView')
     },
     // 查询
     query () {
