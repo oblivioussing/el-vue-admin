@@ -23,12 +23,6 @@ import '@/api/interceptors' // 请求拦截
 // js文件引用
 import '@/mock' // mock
 
-// 样式引用
-import './styles/base.scss'
-import './styles/core.scss'
-import './styles/element-ui.scss'
-import './styles/reset.css'
-
 // 插件使用
 Vue.use(ElementUI)
 
