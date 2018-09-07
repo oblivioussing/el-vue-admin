@@ -37,7 +37,7 @@ const adapter = {
   formAdapter () {
     let containerEl = document.querySelector('.form-container')
     if (containerEl) {
-      containerEl.style.height = 'calc(100vh - 158px)'
+      containerEl.style.height = 'calc(100vh - 178px)'
     }
   }
 }
