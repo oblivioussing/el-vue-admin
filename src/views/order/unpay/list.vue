@@ -70,6 +70,10 @@ export default {
   created () {
     // 获取列表
     this.getlist()
+    // 监听列表刷新事件
+    this.$on('global:unpayList', ret => {
+      this.$message.success('保存成功')
+    })
   },
   methods: {
     // 获取列表

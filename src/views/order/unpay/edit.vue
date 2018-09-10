@@ -27,6 +27,7 @@
     <el-footer>
       <el-row class="toolbar footer">
         <el-button @click="save" type="primary" size="mini">保存</el-button>
+        <el-button @click="close" size="mini">关闭</el-button>
       </el-row>
     </el-footer>
   </el-container>
@@ -50,6 +51,11 @@ export default {
   methods: {
     // 保存
     save () {
+      this.$emit('global:unpayList')
+      this.$store.commit('menuTabs/removeTab', 'unpayOrderEdit')
+    },
+    // 关闭
+    close () {
       this.$store.commit('menuTabs/removeTab', 'unpayOrderEdit')
     }
   }

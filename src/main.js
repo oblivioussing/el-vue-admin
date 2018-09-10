@@ -8,6 +8,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import contentmenu from 'v-contextmenu'
 import 'v-contextmenu/dist/index.css'
+import EventProxy from 'vue-event-proxy'
 
 // iconfont引用
 import './assets/iconfont/iconfont'
@@ -28,6 +29,7 @@ import '@/mock' // mock
 // 插件使用
 Vue.use(ElementUI)
 Vue.use(contentmenu)
+Vue.use(EventProxy)
 
 Vue.config.productionTip = false
 

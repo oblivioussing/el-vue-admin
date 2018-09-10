@@ -26,6 +26,11 @@
         </el-table-column>
         <el-table-column prop="address" label="地址">
         </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button @click="edit(scope.row.id)" type="primary" size="small">编辑</el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </el-container>
     <el-footer>
@@ -64,6 +69,9 @@ export default {
     },
     // 新增
     add () {
+    },
+    // 编辑
+    edit () {
     },
     // page改变时
     currentChange (page) {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    我是商品详情
+    我是待付款订单详情
   </div>
 </template>
 

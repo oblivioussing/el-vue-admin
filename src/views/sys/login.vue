@@ -18,6 +18,7 @@
 
 <script>
 import md5 from 'js-md5'
+import api from '@/api/api'
 
 export default {
   name: 'login',
@@ -49,7 +50,7 @@ export default {
         this.loading = true
         let formTemp = JSON.parse(JSON.stringify(this.form))
         formTemp.pwd = md5(formTemp.pwd)
-        const ret = await this.$request.post('api/login', formTemp)
+        const ret = await this.$request.post(api.login, formTemp)
         this.loading = false
         if (this.$core.isSuccess(ret)) {
           this.$store.commit('user/saveUserInfo', ret.data)
