@@ -30,6 +30,9 @@
         <svg @click="collapseToggle" class="icon vetically ic-menu-toggle">
           <use xlink:href="#icon-menu"></use>
         </svg>
+        <svg @click="exit" class="icon vetically ic-exit">
+          <use xlink:href="#icon-exit"></use>
+        </svg>
       </el-header>
       <!-- tab选项卡 -->
       <el-row class="el-tabs-container">
@@ -110,6 +113,10 @@ export default {
     // 菜单显示时触发
     contextmenu (path) {
       this.contextmenuPath = path
+    },
+    // 退出
+    exit () {
+      this.$router.push('login')
     }
   }
 }
@@ -134,6 +141,11 @@ export default {
   color: #fff;
   cursor: pointer;
   left: 10px;
+}
+.ic-exit {
+  color: #fff;
+  cursor: pointer;
+  right: 10px;
 }
 .el-tabs-container {
   padding: 5px 5px 0 5px;
