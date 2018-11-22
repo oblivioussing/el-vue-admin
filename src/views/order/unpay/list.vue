@@ -78,9 +78,9 @@ export default {
   methods: {
     // 获取列表
     async getlist () {
-      const ret = await this.$request.get('api/listUnpayOrder', this.form)
-      if (this.$core.isSuccess(ret)) {
-        this.list = ret.data
+      const data = await this.$request.getData('api1/listUnpayOrder', this.form)
+      if (data) {
+        this.list = data
         this.total = this.list.length
       }
     },

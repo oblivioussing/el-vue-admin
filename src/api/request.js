@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import qs from 'qs'
+import { Message } from 'element-ui'
 import url from './url'
 import core from '@/utils/core'
 
@@ -79,36 +80,27 @@ const request = {
       config.data = qs.stringify(params)
       delete config.params
     }
-    // const notLoadArr = [false, 'twine'] // 此数组中的类型,不显示loading
-    // if (!notLoadArr.includes(type)) {
-    //   const message = type === true ? '加载中...' : type
-    //   Toast.loading({
-    //     duration: 0,
-    //     forbidClick: true,
-    //     loadingType: 'spinner',
-    //     message: message
-    //   })
-    // }
     return new Promise(resolve => {
       axios(config)
         .then(ret => {
-          // !notLoadArr.includes(type) && Toast.clear()
           // 结果处理
           this.resultHandle(resolve, ret.data, type, result)
         })
         .catch(err => {
-          console.log(err)
-          // // 不包含在notLoadArr中的类型就隐藏toast
-          // !notLoadArr.includes(type) && Toast.clear()
-          // // 此数组中的类型,失败不会提示
-          // const notHintArr = [false, 'silence']
-          // !notHintArr.includes(type) && Toast('服务器连接失败')
-          // resolve({ error: err, resMsg: '服务器连接失败' })
+          // 此数组中的类型,失败不会提示
+          const notHintArr = [false, 'silence']
+          !notHintArr.includes(type) && Message.error('服务器连接失败')
+          if (result === 'data') {
+            resolve()
+          } else {
+            resolve({ error: err, resMsg: '服务器连接失败' })
+          }
         })
     })
   },
   // 结果处理
   resultHandle (resolve, ret, type, result) {
+    console.log(core.isSuccess(ret))
     if (core.isSuccess(ret)) {
       if (result === 'code') {
         resolve(true)
@@ -118,9 +110,9 @@ const request = {
         resolve(ret)
       }
     } else {
-      // const notHintArr = [false, 'silence'] // 此数组中的类型,失败不会提示
+      const notHintArr = [false, 'silence'] // 此数组中的类型,失败不会提示
       // 消息提示
-      // !notHintArr.includes(type) && Toast(ret.resMsg || '服务器错误')
+      !notHintArr.includes(type) && Message.error(ret.resMsg || '服务器错误')
       // reslove
       if (result === 'code') {
         resolve(ret.resultCode)

@@ -68,7 +68,7 @@ const core = {
   },
   // 请求是否成功
   isSuccess (ret) {
-    return ret.code === apiCode.success
+    return ret.resultCode === apiCode.success
   },
   // 时间转为刚刚、几分钟前、几小时前
   timeRelative (stamp) {
