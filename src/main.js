@@ -18,7 +18,6 @@ import './assets/iconfont/iconfont.css'
 import '@/extension/filters' // 指令
 import '@/extension/directives' // 过滤器
 import '@/extension/warden' // 路由守卫
-import '@/utils/dict' // 字典
 import '@/utils/core' // core
 import '@/api/request' // request
 import '@/api/interceptors' // 请求拦截
