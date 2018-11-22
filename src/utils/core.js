@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import dict from './dict'
+import apiCode from '@/api/apiCode'
 
 let ls = localStorage
 let ss = sessionStorage
@@ -68,7 +68,7 @@ const core = {
   },
   // 请求是否成功
   isSuccess (ret) {
-    return ret.code === dict.success
+    return ret.code === apiCode.success
   },
   // 时间转为刚刚、几分钟前、几小时前
   timeRelative (stamp) {
