@@ -105,3 +105,5 @@ const core = {
 }
 
 Vue.prototype.$core = core
+
+export default core

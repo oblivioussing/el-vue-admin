@@ -21,6 +21,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     {
       path: '/login',
@@ -31,9 +32,7 @@ export default new Router({
       path: '/',
       hidden: true,
       component: Home,
-      children: [
-        { path: '/', component: index }
-      ]
+      children: [{ path: '/', component: index }]
     },
     {
       path: '/order',
@@ -43,13 +42,39 @@ export default new Router({
       component: Home,
       children: [
         // 订单(待付款)
-        { path: '/unpayOrderList', title: '待付款订单列表', component: unpayOrderList, menu: true },
-        { path: '/unpayOrderAdd', title: '待付款订单新增', component: unpayOrderAdd },
-        { path: '/unpayOrderEdit', title: '待付款订单编辑', component: unpayOrderEdit },
-        { path: '/unpayOrderView', title: '待付款订单详情', component: unpayOrderView },
+        {
+          path: '/unpayOrderList',
+          title: '待付款订单列表',
+          component: unpayOrderList,
+          menu: true
+        },
+        {
+          path: '/unpayOrderAdd',
+          title: '待付款订单新增',
+          component: unpayOrderAdd
+        },
+        {
+          path: '/unpayOrderEdit',
+          title: '待付款订单编辑',
+          component: unpayOrderEdit
+        },
+        {
+          path: '/unpayOrderView',
+          title: '待付款订单详情',
+          component: unpayOrderView
+        },
         // 订单(已付款)
-        { path: '/paidOrderList', title: '已付款订单列表', component: paidOrderList, menu: true },
-        { path: '/paidOrderView', title: '已付款订单编辑', component: paidOrderView }
+        {
+          path: '/paidOrderList',
+          title: '已付款订单列表',
+          component: paidOrderList,
+          menu: true
+        },
+        {
+          path: '/paidOrderView',
+          title: '已付款订单编辑',
+          component: paidOrderView
+        }
       ]
     },
     {
@@ -59,7 +84,12 @@ export default new Router({
       menu: true,
       component: Home,
       children: [
-        { path: '/dictList', title: '字典列表', component: dictList, menu: true }
+        {
+          path: '/dictList',
+          title: '字典列表',
+          component: dictList,
+          menu: true
+        }
       ]
     }
   ]
