@@ -25,7 +25,7 @@
     </el-row>
     <!-- 列表 -->
     <el-container class="list-container">
-      <el-table :data="list" border height="100%">
+      <el-table :data="list" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" border height="100%">
         <el-table-column label="订单编号">
           <template slot-scope="scope">
             <div @click="detail(scope.row.orderNo)" class="table-link">{{scope.row.orderNo}}</div>
@@ -64,7 +64,8 @@ export default {
     return {
       form: {},
       list: [],
-      total: 0
+      total: 0,
+      loading: false
     }
   },
   created () {
@@ -78,7 +79,9 @@ export default {
   methods: {
     // 获取列表
     async getlist () {
-      const data = await this.$request.getData('api1/listUnpayOrder', this.form)
+      this.loading = true
+      const data = await this.$request.getData('api/listUnpayOrder', this.form)
+      this.loading = false
       if (data) {
         this.list = data
         this.total = this.list.length
