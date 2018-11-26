@@ -100,7 +100,6 @@ const request = {
   },
   // 结果处理
   resultHandle (resolve, ret, type, result) {
-    console.log(core.isSuccess(ret))
     if (core.isSuccess(ret)) {
       if (result === 'code') {
         resolve(true)

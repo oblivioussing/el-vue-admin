@@ -70,6 +70,10 @@ export default {
       contextmenuPath: '' // 鼠标右键选中的path
     }
   },
+  created () {
+    // 菜单初始化
+    this.$store.commit('menuTabs/menuInit')
+  },
   computed: {
     ...mapState('menuTabs', {
       menus: 'menus',

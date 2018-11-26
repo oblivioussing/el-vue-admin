@@ -17,13 +17,23 @@ const getters = {
 }
 
 const mutations = {
+  // 菜单初始化
+  menuInit (state) {
+    // 菜单列表
+    state.menus = router.options.routes
+    // 初始化路由映射
+    this.commit('menuTabs/pathMapInit')
+  },
   // 路由变化
   routerChange (state, to) {
     const path = to.path
     state.actived = path
     // 如果没有数据就先初始化
     if (!state.menus.length) {
-      methods.init()
+      // 菜单列表
+      state.menus = router.options.routes
+      // 初始化路由映射
+      this.commit('menuTabs/pathMapInit')
     }
     // 判断该路由是否已经存在
     const exist = state.tabs.some(item => item.path === path)
@@ -38,6 +48,33 @@ const mutations = {
       const title = pathMap && pathMap.title
       title && state.tabs.push({ path, title })
     }
+  },
+  // 初始化路由映射
+  pathMapInit (state) {
+    const menus = state.menus
+    menus.forEach(item => {
+      const path = item.path
+      const children = item.children
+      if (!children) {
+        return
+      }
+      children.forEach(cItem => {
+        const cPath = cItem.path
+        const cTtile = cItem.title
+        let map = {}
+        // path和title的映射
+        map.title = cTtile || ''
+        // path和skip的映射
+        if (cPath.indexOf('List') < 0 && cPath !== '/') {
+          const skip = cPath.replace(/Add|Edit|View/, 'List')
+          map.skip = skip
+        }
+        // path的父级路由的映射
+        map.parentPath = path
+        // 路由映射
+        state.pathMap[cPath] = map
+      })
+    })
   },
   // 关闭一个tab
   removeTab (state, path, jump = true) {
@@ -76,43 +113,6 @@ const mutations = {
     })
     state.tabs = []
     router.push('/')
-  }
-}
-
-const methods = {
-  // 初始化菜单
-  init () {
-    // 菜单列表
-    state.menus = router.options.routes
-    // 初始化路由映射
-    this.pathMapInit()
-  },
-  // 初始化路由映射
-  pathMapInit () {
-    const menus = state.menus
-    menus.forEach(item => {
-      const path = item.path
-      const children = item.children
-      if (!children) {
-        return
-      }
-      children.forEach(cItem => {
-        const cPath = cItem.path
-        const cTtile = cItem.title
-        let map = {}
-        // path和title的映射
-        map.title = cTtile || ''
-        // path和skip的映射
-        if (cPath.indexOf('List') < 0 && cPath !== '/') {
-          const skip = cPath.replace(/Add|Edit|View/, 'List')
-          map.skip = skip
-        }
-        // path的父级路由的映射
-        map.parentPath = path
-        // 路由映射
-        state.pathMap[cPath] = map
-      })
-    })
   }
 }
 
