@@ -87,7 +87,10 @@ const mutations = {
       actived = state.tabs.length > 0 ? state.tabs[0].path : '/'
     }
     const pathMap = state.pathMap[path]
-    const skip = pathMap && pathMap.skip
+    // 关闭后要跳转的页面
+    let skip = pathMap && pathMap.skip
+    const isSkipInTabs = state.tabs.some(item => item.path === skip)
+    skip = isSkipInTabs ? skip : false
     state.actived = skip || actived
     state.exclude = path.substr(1)
     // 路由跳转
