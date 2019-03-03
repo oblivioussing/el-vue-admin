@@ -80,7 +80,7 @@ export default {
     // 获取列表
     async getlist () {
       this.loading = true
-      const data = await this.$request.getData('api/listUnpayOrder', this.form)
+      const data = await this.$getData('api/listUnpayOrder', this.form)
       this.loading = false
       if (data) {
         this.list = data
