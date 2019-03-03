@@ -1,5 +1,4 @@
-const dict = {
-  /** 文件类型**/
+const fileType = {
   pic: '10', // 图片
   video: '11', // 视频
   audio: '12', // 音频
@@ -11,4 +10,4 @@ const dict = {
   zip: '18' // 压缩包
 }
 
-export default dict
+export default fileType

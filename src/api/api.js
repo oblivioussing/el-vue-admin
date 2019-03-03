@@ -1,4 +1,7 @@
+import apiUrl from '@/api/url'
+import fileType from '@/enum/fileType'
+
 const api = {
-  login: 'api/login' // 登录
+  uploadImg: `${apiUrl.fs}perp/cms/uploadMedia?fileType=${fileType.pic}`
 }
 export default api
