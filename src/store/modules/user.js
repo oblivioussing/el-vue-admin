@@ -3,7 +3,7 @@ const state = {
 }
 const mutations = {
   // 保存用户信息
-  saveUser (state, obj) {
+  saveUserInfo (state, obj) {
     state.userInfo = obj
   },
   // 清除用户信息

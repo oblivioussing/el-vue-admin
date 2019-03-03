@@ -30,7 +30,7 @@
     <!-- 右侧内容区 -->
     <el-container>
       <!-- 右侧顶部 -->
-      <el-header class="rel">
+      <el-header class="top-header rel">
         <svg @click="collapseToggle" class="icon vetically ic-menu-toggle">
           <use xlink:href="#icon-menu"></use>
         </svg>

@@ -41,7 +41,26 @@ export default {
   methods: {
     // 登陆
     login (ev) {
-      this.$store.commit('user/saveUserInfo', { token: 123 })
+      const userInfo = {
+        token: 123,
+        authorityMenus: [{
+          path: '/order',
+          authority: true
+        }, {
+          path: '/unpayOrderList',
+          authority: true
+        }, {
+          path: '/paidOrderList',
+          authority: true
+        }, {
+          path: '/setting',
+          authority: true
+        }, {
+          path: '/dict',
+          authority: true
+        }]
+      }
+      this.$store.commit('user/saveUserInfo', userInfo)
       this.$router.replace({ path: '/' })
       // this.$refs.form.validate(async valid => {
       //   if (!valid) {

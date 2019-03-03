@@ -15,7 +15,7 @@
       </el-form>
     </el-row>
     <!-- 操作按钮 -->
-    <el-row class="toolbar">
+    <el-row class="toolbar operate">
       <el-button @click="add" size="mini" type="primary" icon="plus">新增</el-button>
       <el-button-group class="vetically right-10">
         <el-button @click="query" size="mini" type="primary">查询</el-button>
@@ -49,10 +49,7 @@
     </el-container>
     <!-- 分页 -->
     <el-footer>
-      <el-row class="toolbar m-t-5 t-a-c">
-        <el-pagination :page-sizes="[10, 20, 30, 40]" :current-page="form.page" :page-size="form.size" :total="total" @current-change="currentChange" @size-change="sizeChange" layout="total, sizes, prev, pager, next, jumper">
-        </el-pagination>
-      </el-row>
+      <pagination @getList="getList" :form.sync="form" :total="total"></pagination>
     </el-footer>
   </el-container>
 </template>
@@ -62,15 +59,15 @@ export default {
   name: 'unpayOrderList',
   data () {
     return {
-      form: {},
-      list: [],
-      total: 0,
-      loading: false
+      list: [], // 列表
+      form: {}, // 表单
+      total: 0, // 总条数
+      loading: false // loading
     }
   },
   created () {
     // 获取列表
-    this.getlist()
+    this.getList()
     // 监听列表刷新事件
     this.$on('global:unpayList', ret => {
       this.$message.success('保存成功')
@@ -78,7 +75,7 @@ export default {
   },
   methods: {
     // 获取列表
-    async getlist () {
+    async getList () {
       this.loading = true
       const data = await this.$getData('api/listUnpayOrder', this.form)
       this.loading = false
@@ -110,18 +107,7 @@ export default {
     },
     // 重置
     reset () {
-      const [page, size] = [1, 10]
-      this.form = { page, size }
-    },
-    // page改变时
-    currentChange (page) {
-      this.form.page = page
-      this.getlist()
-    },
-    // size改变时
-    sizeChange (size) {
-      this.form.size = size
-      this.getlist()
+      this.form = {}
     }
   }
 }
