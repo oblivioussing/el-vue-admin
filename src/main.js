@@ -5,7 +5,7 @@ import store from './store'
 
 // 模块引用
 import ElementUI from 'element-ui'
-import './styles/element-variables.scss'
+import 'element-ui/lib/theme-chalk/index.css'
 import contentmenu from 'v-contextmenu'
 import 'v-contextmenu/dist/index.css'
 import EventProxy from 'vue-event-proxy'
@@ -14,7 +14,7 @@ import EventProxy from 'vue-event-proxy'
 import '@/utils/import'
 
 // 插件使用
-Vue.use(ElementUI, { size: 'mini' })
+Vue.use(ElementUI)
 Vue.use(contentmenu)
 Vue.use(EventProxy)
 

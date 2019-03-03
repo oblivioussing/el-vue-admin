@@ -11,5 +11,5 @@ export default new Vuex.Store({
     menuTabs,
     user
   },
-  plugins: [persistedState()]
+  plugins: [persistedState({ key: process.env.BASE_URL })]
 })

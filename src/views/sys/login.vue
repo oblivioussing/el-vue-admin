@@ -17,11 +17,9 @@
 </template>
 
 <script>
-import md5 from 'js-md5'
-import api from '@/api/api'
+// import md5 from 'js-md5'
 
 export default {
-  name: 'login',
   data () {
     return {
       form: {
@@ -43,22 +41,24 @@ export default {
   methods: {
     // 登陆
     login (ev) {
-      this.$refs.form.validate(async valid => {
-        if (!valid) {
-          return
-        }
-        this.loading = true
-        let formTemp = JSON.parse(JSON.stringify(this.form))
-        formTemp.pwd = md5(formTemp.pwd)
-        const ret = await this.$request.post(api.login, formTemp)
-        this.loading = false
-        if (this.$core.isSuccess(ret)) {
-          this.$store.commit('user/saveUserInfo', ret.data)
-          this.$router.replace({ path: '/' })
-        } else {
-          this.$message.error(ret.msg)
-        }
-      })
+      this.$store.commit('user/saveUserInfo', { token: 123 })
+      this.$router.replace({ path: '/' })
+      // this.$refs.form.validate(async valid => {
+      //   if (!valid) {
+      //     return
+      //   }
+      //   this.loading = true
+      //   let form = JSON.parse(JSON.stringify(this.form))
+      //   form.pwd = md5(form.pwd)
+      //   const ret = await this.$post(api.login, form)
+      //   this.loading = false
+      //   if (this.$core.isSuccess(ret)) {
+      //     this.$store.commit('user/saveUserInfo', ret.data)
+      //     this.$router.replace({ path: '/' })
+      //   } else {
+      //     this.$message.error(ret.msg)
+      //   }
+      // })
     }
   }
 }

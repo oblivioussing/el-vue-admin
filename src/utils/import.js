@@ -11,4 +11,3 @@ import '@/utils/base' // base
 import '@/utils/element' // element方法
 import '@/api/request' // request
 import '@/api/interceptors' // 请求拦截
-import '@/mock' // mock
