@@ -3,14 +3,16 @@ const state = {
 }
 const mutations = {
   // 保存用户信息
-  saveUserInfo (state, obj) {
+  saveUser (state, obj) {
     state.userInfo = obj
+  },
+  // 清除用户信息
+  removeUser (state) {
+    state.userInfo = {}
   }
 }
 
-const actions = {
-
-}
+const actions = {}
 
 export default {
   namespaced: true,

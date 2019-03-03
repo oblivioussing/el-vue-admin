@@ -9,7 +9,8 @@
       <!-- 侧栏导航菜单 -->
       <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical">
         <!-- 一级菜单 -->
-        <el-submenu v-if="item.menu===true" v-for="item in menus" :index="item.path" :key="item.path">
+        <template v-for="item in menus">
+          <el-submenu v-if="isMenu(item)" :index="item.path" :key="item.path">
           <template slot="title">
             <svg class="icon" aria-hidden="true">
               <use :xlink:href="'#icon-'+item.icon"></use>
@@ -17,10 +18,13 @@
             <span slot="title">{{item.title}}</span>
           </template>
           <!-- 二级菜单 -->
-          <el-menu-item v-if="children.menu===true" v-for="children in item.children" :index="children.path" :key="children.path">
+          <template v-for="children in item.children">
+            <el-menu-item v-if="isMenu(children)" :index="children.path" :key="children.path">
             {{children.title}}
           </el-menu-item>
+          </template>
         </el-submenu>
+        </template>
       </el-menu>
     </el-row>
     <!-- 右侧内容区 -->
@@ -86,6 +90,17 @@ export default {
     })
   },
   methods: {
+    // 是否显示菜单
+    isMenu (item) {
+      const isMenu = item.menu === true
+      // 判断路由权限
+      const isAuthority = this.$base.isAuthority(item.path)
+      return isMenu && isAuthority
+    },
+    // title转化
+    titleFmt (item) {
+      return item ? item.title : ''
+    },
     // 菜单切换
     menuSelect (path) {
       this.$router.push(path)

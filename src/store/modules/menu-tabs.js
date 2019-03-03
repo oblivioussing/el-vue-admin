@@ -1,8 +1,9 @@
 import router from '@/router'
+import store from '@/store'
 
 const state = {
   menus: [], // 菜单列表
-  tabs: [], // 顶部tab
+  tabs: [{ path: '/', title: '首页' }], // 顶部tab
   actived: '', // 需要激活的path
   pathMap: {}, // 路由映射
   exclude: '' // 销毁的路由组件
@@ -53,15 +54,18 @@ const mutations = {
   pathMapInit (state) {
     const menus = state.menus
     menus.forEach(item => {
-      const path = item.path
       const children = item.children
       if (!children) {
         return
       }
+      const path = item.path
+      const title = item.meta && item.meta.title
+      state.pathMap[path] = { path, title }
       children.forEach(cItem => {
-        const cPath = cItem.path
-        const cTtile = cItem.title
         let map = {}
+        const cPath = cItem.path
+        const cMeta = cItem.meta
+        const cTtile = cMeta && cMeta.title
         // path和title的映射
         map.title = cTtile || ''
         // path和skip的映射
@@ -75,9 +79,25 @@ const mutations = {
         state.pathMap[cPath] = map
       })
     })
+    // 路由权限初始化
+    this.commit('menuTabs/pathAuthorityInit')
+  },
+  // 路由权限初始化
+  pathAuthorityInit (state) {
+    const userInfo = store.state.user.userInfo
+    const authorityMenus = userInfo.authorityMenus || []
+    for (let item in state.pathMap) {
+      for (let authorityItem of authorityMenus) {
+        if (item === authorityItem.path) {
+          // 向pathMap赋值权限属性
+          state.pathMap[item].authority = authorityItem.authority
+        }
+      }
+    }
   },
   // 关闭一个tab
   removeTab (state, path, jump = true) {
+    path = path.includes('/') ? path : `/${path}`
     const index = state.tabs.findIndex(item => item.path === path)
     state.tabs.splice(index, 1)
     let actived
@@ -116,6 +136,10 @@ const mutations = {
     })
     state.tabs = []
     router.push('/')
+  },
+  // 清空被销毁的路由组件
+  clearExclude (state) {
+    state.exclude = ''
   }
 }
 

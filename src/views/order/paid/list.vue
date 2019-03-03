@@ -12,7 +12,7 @@
       </el-form>
     </el-row>
     <!-- 操作按钮 -->
-    <el-row class="toolbar">
+    <el-row class="toolbar operate">
       <el-button @click="add" type="primary" size="mini">新增</el-button>
       <el-button-group class="vetically right-10">
         <el-button size="mini" type="primary">查询</el-button>
