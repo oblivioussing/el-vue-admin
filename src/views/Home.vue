@@ -15,12 +15,12 @@
             <svg class="icon" aria-hidden="true">
               <use :xlink:href="'#icon-'+item.icon"></use>
             </svg>
-            <span slot="title">{{item.title}}</span>
+            <span slot="title">{{titleFmt(item.meta)}}</span>
           </template>
           <!-- 二级菜单 -->
           <template v-for="children in item.children">
             <el-menu-item v-if="isMenu(children)" :index="children.path" :key="children.path">
-            {{children.title}}
+            {{titleFmt(children.meta)}}
           </el-menu-item>
           </template>
         </el-submenu>
