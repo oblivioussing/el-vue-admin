@@ -2,7 +2,7 @@
   <el-container>
     <!-- 筛选条件 -->
     <el-row class="toolbar search">
-      <el-form :inline="true" :model="form" size="mini">
+      <el-form :inline="true" :model="form">
         <el-form-item label="商品名称:">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
@@ -13,11 +13,11 @@
     </el-row>
     <!-- 操作按钮 -->
     <el-row class="toolbar operate">
-      <el-button @click="add" type="primary" size="mini">新增</el-button>
+      <el-button @click="add" type="primary">新增</el-button>
       <el-button-group class="vetically right-10">
-        <el-button size="mini" type="primary">查询</el-button>
-        <el-button size="mini" type="primary">刷新</el-button>
-        <el-button size="mini" type="primary">重置</el-button>
+        <el-button type="primary">查询</el-button>
+        <el-button type="primary">刷新</el-button>
+        <el-button type="primary">重置</el-button>
       </el-button-group>
     </el-row>
     <!-- 列表 -->

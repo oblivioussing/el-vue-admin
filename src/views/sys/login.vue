@@ -73,6 +73,7 @@ export default {
       //   this.loading = false
       //   if (this.$core.isSuccess(ret)) {
       //     this.$store.commit('user/saveUserInfo', ret.data)
+      //     this.$store.commit('menuTabs/removeTabAll')
       //     this.$router.replace({ path: '/' })
       //   } else {
       //     this.$message.error(ret.msg)

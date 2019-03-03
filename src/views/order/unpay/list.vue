@@ -2,7 +2,7 @@
   <el-container>
     <!-- 筛选条件 -->
     <el-row class="toolbar search">
-      <el-form :inline="true" :model="form" size="mini">
+      <el-form :inline="true" :model="form">
         <el-form-item label="订单编号:">
           <el-input v-model="form.orderNo"></el-input>
         </el-form-item>
@@ -16,16 +16,16 @@
     </el-row>
     <!-- 操作按钮 -->
     <el-row class="toolbar operate">
-      <el-button @click="add" size="mini" type="primary" icon="plus">新增</el-button>
+      <el-button @click="add" type="primary" icon="plus">新增</el-button>
       <el-button-group class="vetically right-10">
-        <el-button @click="query" size="mini" type="primary">查询</el-button>
-        <el-button @click="refresh" size="mini" type="primary">刷新</el-button>
-        <el-button @click="reset" size="mini" type="primary">重置</el-button>
+        <el-button @click="query" type="primary">查询</el-button>
+        <el-button @click="refresh" type="primary">刷新</el-button>
+        <el-button @click="reset" type="primary">重置</el-button>
       </el-button-group>
     </el-row>
     <!-- 列表 -->
     <el-container class="list-container">
-      <el-table :data="list" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" border height="100%">
+      <el-table :data="list" v-loading="loading" border height="100%">
         <el-table-column label="订单编号">
           <template slot-scope="scope">
             <div @click="detail(scope.row.orderNo)" class="table-link">{{scope.row.orderNo}}</div>
@@ -42,7 +42,7 @@
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button @click="edit(scope.row.id)" type="primary" size="small">编辑</el-button>
+            <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -76,13 +76,22 @@ export default {
   methods: {
     // 获取列表
     async getList () {
-      this.loading = true
-      const data = await this.$getData('api/listUnpayOrder', this.form)
-      this.loading = false
-      if (data) {
-        this.list = data
-        this.total = this.list.length
+      for (let i = 0; i < 15; i++) {
+        this.list.push(
+          {
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          }
+        )
       }
+      // this.loading = true
+      // const data = await this.$getData('api/listUnpayOrder', this.form)
+      // this.loading = false
+      // if (data) {
+      //   this.list = data
+      //   this.total = this.list.length
+      // }
     },
     // 新增
     add () {

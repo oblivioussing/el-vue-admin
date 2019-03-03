@@ -40,9 +40,9 @@
       </el-header>
       <!-- tab选项卡 -->
       <el-row class="el-tabs-container">
-        <el-tabs v-show="tabs.length" @tab-click="tab" @tab-remove="removeTab" :value="actived" closable type="card">
-          <el-tab-pane v-for="item in tabs" :key="item.path" :name="item.path">
-            <span slot="label" v-contextmenu:contextmenu @contextmenu="contextmenu(item.path)">{{item.title}}</span>
+        <el-tabs v-show="tabs.length" @tab-click="tab" @tab-remove="removeTab" :value="actived" type="card">
+          <el-tab-pane v-for="item in tabs" :closable="item.path!=='/'" :key="item.path" :name="item.path">
+            <span slot="label" v-contextmenu:contextmenu @contextmenu="contextmenu(item.path)">{{titleFmt(item)}}</span>
           </el-tab-pane>
         </el-tabs>
         <v-contextmenu ref="contextmenu">

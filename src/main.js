@@ -14,7 +14,7 @@ import EventProxy from 'vue-event-proxy'
 import '@/utils/import'
 
 // 插件使用
-Vue.use(ElementUI)
+Vue.use(ElementUI, { size: 'mini' })
 Vue.use(contentmenu)
 Vue.use(EventProxy)
 

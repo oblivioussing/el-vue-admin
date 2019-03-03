@@ -54,7 +54,7 @@ class Adapter {
       const footerEl = this.dom(id, '.el-footer')
       const footerH = footerEl ? footerEl.offsetHeight : 0
       // 高度
-      const height = topH + footerH + 5
+      const height = topH + footerH + 20
       containerEl.style.height = `calc(100vh - ${height}px)`
     }
   }
