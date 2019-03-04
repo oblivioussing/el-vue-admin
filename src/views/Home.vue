@@ -3,27 +3,27 @@
     <el-row>
       <!-- 左侧顶部logo -->
       <div class="el-menu-header">
-        <img v-show="isCollapse" class="gravity-center" src="../assets/img/test/logo_smell.svg">
-        <img v-show="!isCollapse" class="gravity-center" src="../assets/img/test/logo_large.svg">
+        <img v-show="isCollapse" class="gravity-center" :src="testImg.logo_smell">
+        <img v-show="!isCollapse" class="gravity-center" :src="testImg.logo_large">
       </div>
       <!-- 侧栏导航菜单 -->
       <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical">
         <!-- 一级菜单 -->
         <template v-for="item in menus">
           <el-submenu v-if="isMenu(item)" :index="item.path" :key="item.path">
-          <template slot="title">
-            <svg class="icon" aria-hidden="true">
-              <use :xlink:href="'#icon-'+item.icon"></use>
-            </svg>
-            <span slot="title">{{titleFmt(item.meta)}}</span>
-          </template>
-          <!-- 二级菜单 -->
-          <template v-for="children in item.children">
-            <el-menu-item v-if="isMenu(children)" :index="children.path" :key="children.path">
-            {{titleFmt(children.meta)}}
-          </el-menu-item>
-          </template>
-        </el-submenu>
+            <template slot="title">
+              <svg class="icon" aria-hidden="true">
+                <use :xlink:href="'#icon-'+item.icon"></use>
+              </svg>
+              <span slot="title">{{titleFmt(item.meta)}}</span>
+            </template>
+            <!-- 二级菜单 -->
+            <template v-for="children in item.children">
+              <el-menu-item v-if="isMenu(children)" :index="children.path" :key="children.path">
+                {{titleFmt(children.meta)}}
+              </el-menu-item>
+            </template>
+          </el-submenu>
         </template>
       </el-menu>
     </el-row>
@@ -55,7 +55,7 @@
       <el-main class="h-100">
         <transition>
           <keep-alive :exclude="exclude">
-            <router-view/>
+            <router-view />
           </keep-alive>
         </transition>
       </el-main>
@@ -65,13 +65,15 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import testImg from '@/const/img/test'
 
 export default {
   name: 'home',
   data () {
     return {
       isCollapse: false, // 是否折叠菜单
-      contextmenuPath: '' // 鼠标右键选中的path
+      contextmenuPath: '', // 鼠标右键选中的path
+      testImg: testImg // 测试图片
     }
   },
   created () {
@@ -143,7 +145,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/mixin.scss';
+@import "../styles/mixin.scss";
 
 .el-menu-header {
   height: 60px;
