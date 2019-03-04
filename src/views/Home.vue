@@ -135,6 +135,7 @@ export default {
     },
     // 退出
     exit () {
+      this.$store.commit('menuTabs/removeTabAll')
       this.$router.push('login')
     }
   }
