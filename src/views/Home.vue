@@ -80,13 +80,13 @@ export default {
   },
   computed: {
     ...mapState('menuTabs', {
-      menus: 'menus',
-      tabs: 'tabs',
-      actived: 'actived',
-      exclude: 'exclude'
+      menus: 'menus', // 菜单列表
+      tabs: 'tabs', // 顶部tab
+      actived: 'actived', // 需要激活的path
+      exclude: 'exclude' // 销毁的路由组件
     }),
     ...mapGetters('menuTabs', {
-      'stair': 'stair'
+      'stair': 'stair' // 当前路由的父级path
     })
   },
   methods: {
