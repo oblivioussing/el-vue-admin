@@ -29,7 +29,7 @@
         </el-table-column>
         <el-table-column prop="address" label="地址">
         </el-table-column>
-        <el-table-column label="操作" width="130" fixed="right">
+        <el-table-column label="操作" width="110">
           <template slot-scope="scope">
             <el-button @click="edit(scope.row.id)" type="primary" size="small">编辑</el-button>
           </template>

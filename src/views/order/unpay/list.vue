@@ -40,7 +40,7 @@
         <el-table-column label="订单有效期">
           <template slot-scope="scope">{{scope.row.expireTime|fmtDate}}</template>
         </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作" width="110">
           <template slot-scope="scope">
             <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>
           </template>
