@@ -34,9 +34,12 @@
         <svg @click="collapseToggle" class="icon vetically ic-menu-toggle">
           <use xlink:href="#icon-menu"></use>
         </svg>
-        <svg @click="exit" class="icon vetically ic-exit">
-          <use xlink:href="#icon-exit"></use>
-        </svg>
+        <div class="vetically right-10">
+          <svg @click="exit" class="icon">
+            <use xlink:href="#icon-avatar"></use>
+          </svg>
+          <span class="p-l-5">大魔王</span>
+        </div>
       </el-header>
       <!-- tab选项卡 -->
       <el-row class="el-tabs-container">
@@ -145,8 +148,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/mixin.scss";
-
 .el-menu-header {
   height: 60px;
   position: relative;
@@ -159,8 +160,10 @@ export default {
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;
 }
+.top-header{
+  color: $white;
+}
 .ic-menu-toggle {
-  color: #fff;
   cursor: pointer;
   left: 10px;
 }

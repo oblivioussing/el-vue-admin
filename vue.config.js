@@ -12,6 +12,13 @@ module.exports = {
       })
     ]
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import "@/styles/variable.scss";@import "@/styles/mixins.scss";`
+      }
+    }
+  },
   devServer: {
     port: 8080
   }
