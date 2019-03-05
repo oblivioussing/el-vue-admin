@@ -13,7 +13,9 @@
   align-items: center;
   justify-content: center;
 }
-
+.justify-end{
+  justify-content: flex-end;
+}
 .flex-1 {
   flex: 1;
   position: relative;
@@ -97,6 +99,10 @@
   transform: translateY(-50%);
 }
 
+// 指针
+.pointer{
+  cursor: pointer;
+}
 /*间距*/
 
 .m-p-0 {

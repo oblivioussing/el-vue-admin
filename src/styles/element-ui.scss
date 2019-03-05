@@ -2,8 +2,10 @@
 .el-header {
   background-color: #409eff;
   color: #333;
+  height: 50px !important;
+  padding: 0 10px !important;
   text-align: center;
-  line-height: 60px;
+  line-height: 50px !important;
 }
 
 .el-aside {

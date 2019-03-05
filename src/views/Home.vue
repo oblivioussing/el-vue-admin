@@ -34,12 +34,24 @@
         <svg @click="collapseToggle" class="icon vetically ic-menu-toggle">
           <use xlink:href="#icon-menu"></use>
         </svg>
-        <div class="vetically right-10">
-          <svg @click="exit" class="icon">
-            <use xlink:href="#icon-avatar"></use>
-          </svg>
-          <span class="p-l-5">大魔王</span>
-        </div>
+        <ul class="flex justify-end">
+          <li class="pointer p-l-r-5">
+            <svg class="icon">
+              <use xlink:href="#icon-message"></use>
+            </svg>
+          </li>
+          <li class="pointer p-l-r-5">
+            <svg class="icon">
+              <use xlink:href="#icon-add"></use>
+            </svg>
+          </li>
+          <li class="pointer p-l-r-5">
+            <svg class="icon">
+              <use xlink:href="#icon-avatar"></use>
+            </svg>
+            <span class="p-l-5">张三</span>
+          </li>
+        </ul>
       </el-header>
       <!-- tab选项卡 -->
       <el-row class="el-tabs-container">
@@ -149,28 +161,26 @@ export default {
 
 <style lang="scss" scoped>
 .el-menu-header {
-  height: 60px;
+  height: 50px;
   position: relative;
   width: 100%;
 }
 .el-menu-vertical {
   @include scroll-beautify;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 50px);
 }
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;
 }
-.top-header{
+.top-header {
   color: $white;
-}
-.ic-menu-toggle {
-  cursor: pointer;
-  left: 10px;
-}
-.ic-exit {
-  color: #fff;
-  cursor: pointer;
-  right: 10px;
+  .ic-menu-toggle {
+    cursor: pointer;
+    left: 10px;
+  }
+  .b-r {
+    border-right: 1px $white solid;
+  }
 }
 .el-tabs-container {
   padding: 5px 5px 0 5px;
