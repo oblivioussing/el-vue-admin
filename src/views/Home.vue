@@ -46,17 +46,18 @@
             </svg>
           </li>
           <li class="pointer p-l-r-5">
-            <el-popover placement="bottom" trigger="hover">
-              <div>
-                12345566
-              </div>
-              <div slot="reference">
+            <el-dropdown>
+              <span class="c-white">
                 <svg class="icon">
                   <use xlink:href="#icon-avatar"></use>
                 </svg>
                 <span class="p-l-5">张三</span>
-              </div>
-            </el-popover>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item icon="el-icon-plus">个人资料</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-circle-plus">退出</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
           </li>
         </ul>
       </el-header>
@@ -184,6 +185,12 @@ export default {
   .ic-menu-toggle {
     cursor: pointer;
     left: 10px;
+  }
+  .el-dropdown{
+    font-size: 16px !important;
+  }
+  .c-white {
+    color: $white;
   }
   .b-r {
     border-right: 1px $white solid;
