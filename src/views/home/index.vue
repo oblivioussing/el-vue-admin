@@ -46,7 +46,7 @@
             </svg>
           </li>
           <li class="pointer p-l-r-5">
-            <el-dropdown>
+            <el-dropdown @command="personCommand">
               <span class="c-white">
                 <svg class="icon">
                   <use xlink:href="#icon-avatar"></use>
@@ -54,8 +54,8 @@
                 <span class="p-l-5">张三</span>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item icon="el-icon-plus">个人资料</el-dropdown-item>
-                <el-dropdown-item icon="el-icon-circle-plus">退出</el-dropdown-item>
+                <el-dropdown-item command="account">个人资料</el-dropdown-item>
+                <el-dropdown-item command="exit">退出</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </li>
@@ -115,6 +115,13 @@ export default {
     })
   },
   methods: {
+    personCommand (val) {
+      if (val === 'account') {
+        this.$router.push('account')
+      } else {
+        this.exit()
+      }
+    },
     // 是否显示菜单
     isMenu (item) {
       const isMenu = item.menu === true
@@ -186,7 +193,7 @@ export default {
     cursor: pointer;
     left: 10px;
   }
-  .el-dropdown{
+  .el-dropdown {
     font-size: 16px !important;
   }
   .c-white {

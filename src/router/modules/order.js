@@ -8,7 +8,7 @@ const unpayOrderView = () => import('@/views/order/unpay/view')
 const paidOrderList = () => import('@/views/order/paid/list')
 const paidOrderView = () => import('@/views/order/paid/view')
 
-const prize = {
+const order = {
   path: '/order',
   component: Home,
   icon: 'order',
@@ -51,4 +51,4 @@ const prize = {
   ]
 }
 
-export default prize
+export default order
