@@ -1,4 +1,4 @@
-const Home = () => import('@/views/Home')
+const Home = () => import('@/views/home/index')
 // 订单(待付款)
 const unpayOrderAdd = () => import('@/views/order/unpay/add')
 const unpayOrderEdit = () => import('@/views/order/unpay/edit')

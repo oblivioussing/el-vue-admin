@@ -1,4 +1,4 @@
-const Home = () => import('@/views/Home')
+const Home = () => import('@/views/home/index')
 const dictList = () => import('@/views/setting/dict') // 字典管理
 
 const setting = {
@@ -11,8 +11,8 @@ const setting = {
     {
       path: '/dict',
       component: dictList,
-      menu: true,
-      meta: { title: '字典管理', id: 'dictItemList' }
+      meta: { title: '字典管理', id: 'dictItemList' },
+      menu: true
     }
   ]
 }
