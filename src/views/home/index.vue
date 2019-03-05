@@ -34,6 +34,7 @@
         <svg @click="collapseToggle" class="icon vetically ic-menu-toggle">
           <use xlink:href="#icon-menu"></use>
         </svg>
+        <!-- 功能选择 -->
         <header-action></header-action>
       </el-header>
       <!-- tab选项卡 -->
