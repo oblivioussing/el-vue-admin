@@ -119,11 +119,11 @@ const mutations = {
   // 关闭其他tab
   removeTabOther (state, path) {
     state.tabs.forEach(item => {
-      if (item.path !== path) {
+      if (item.path !== path && item.path !== '/') {
         state.exclude = item.path.substr(1)
       }
     })
-    state.tabs = []
+    state.tabs = [{ path: '/', title: '首页' }]
     const pathMap = state.pathMap[path]
     const title = pathMap && pathMap.title
     title && state.tabs.push({ path, title })
