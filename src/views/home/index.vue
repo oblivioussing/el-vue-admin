@@ -34,32 +34,7 @@
         <svg @click="collapseToggle" class="icon vetically ic-menu-toggle">
           <use xlink:href="#icon-menu"></use>
         </svg>
-        <ul class="flex justify-end">
-          <li class="pointer p-l-r-5">
-            <svg class="icon">
-              <use xlink:href="#icon-message"></use>
-            </svg>
-          </li>
-          <li class="pointer p-l-r-5">
-            <svg class="icon">
-              <use xlink:href="#icon-add"></use>
-            </svg>
-          </li>
-          <li class="pointer p-l-r-5">
-            <el-dropdown @command="personCommand">
-              <span class="c-white">
-                <svg class="icon">
-                  <use xlink:href="#icon-avatar"></use>
-                </svg>
-                <span class="p-l-5">张三</span>
-              </span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="account">个人资料</el-dropdown-item>
-                <el-dropdown-item command="exit">退出</el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-          </li>
-        </ul>
+        <header-action></header-action>
       </el-header>
       <!-- tab选项卡 -->
       <el-row class="el-tabs-container">
@@ -88,10 +63,12 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import HeaderAction from './components/HeaderAction'
 import testImg from '@/const/img/test'
 
 export default {
   name: 'home',
+  components: { HeaderAction },
   data () {
     return {
       isCollapse: false, // 是否折叠菜单
@@ -115,13 +92,6 @@ export default {
     })
   },
   methods: {
-    personCommand (val) {
-      if (val === 'account') {
-        this.$router.push('account')
-      } else {
-        this.exit()
-      }
-    },
     // 是否显示菜单
     isMenu (item) {
       const isMenu = item.menu === true
@@ -164,11 +134,6 @@ export default {
     // 菜单显示时触发
     contextmenu (path) {
       this.contextmenuPath = path
-    },
-    // 退出
-    exit () {
-      this.$store.commit('menuTabs/removeTabAll')
-      this.$router.push('login')
     }
   }
 }
@@ -192,15 +157,6 @@ export default {
   .ic-menu-toggle {
     cursor: pointer;
     left: 10px;
-  }
-  .el-dropdown {
-    font-size: 16px !important;
-  }
-  .c-white {
-    color: $white;
-  }
-  .b-r {
-    border-right: 1px $white solid;
   }
 }
 .el-tabs-container {
