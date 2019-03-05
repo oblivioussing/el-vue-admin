@@ -32,10 +32,9 @@ export default {
   methods: {
     // 用户选择
     personCommand (val) {
-      if (val === 'account') {
+      if (val === 'account') { // 个人资料
         this.$router.push('account')
-      } else if (val === 'exit') {
-        // 退出
+      } else if (val === 'exit') { // 退出
         this.exit()
       }
     },
