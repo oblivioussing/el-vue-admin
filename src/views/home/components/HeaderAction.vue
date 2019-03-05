@@ -34,7 +34,8 @@ export default {
     personCommand (val) {
       if (val === 'account') {
         this.$router.push('account')
-      } else {
+      } else if (val === 'exit') {
+        // 退出
         this.exit()
       }
     },
