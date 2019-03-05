@@ -3,14 +3,14 @@
     <el-form :model="form" :rules="rules" ref="form" class="login-container gravity-center">
       <h3 class="title">欢迎使用</h3>
       <el-form-item prop="loginName">
-        <el-input v-model="form.loginName" type="text" auto-complete="off" placeholder="账号"></el-input>
+        <el-input v-model="form.loginName" size="medium" type="text" auto-complete="off" placeholder="账号"></el-input>
       </el-form-item>
       <el-form-item prop="pwd">
-        <el-input v-model="form.pwd" type="password" auto-complete="off" placeholder="密码"></el-input>
+        <el-input v-model="form.pwd" size="medium" type="password" auto-complete="off" placeholder="密码"></el-input>
       </el-form-item>
       <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
       <el-form-item>
-        <el-button @click="login" :loading="loading" type="primary" class="w-100">登录</el-button>
+        <el-button @click="login" :loading="loading" size="medium" type="primary" class="w-100">登录</el-button>
       </el-form-item>
     </el-form>
   </el-row>
