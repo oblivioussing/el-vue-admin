@@ -46,10 +46,17 @@
             </svg>
           </li>
           <li class="pointer p-l-r-5">
-            <svg class="icon">
-              <use xlink:href="#icon-avatar"></use>
-            </svg>
-            <span class="p-l-5">张三</span>
+            <el-popover placement="bottom" trigger="hover">
+              <div>
+                12345566
+              </div>
+              <div slot="reference">
+                <svg class="icon">
+                  <use xlink:href="#icon-avatar"></use>
+                </svg>
+                <span class="p-l-5">张三</span>
+              </div>
+            </el-popover>
           </li>
         </ul>
       </el-header>
