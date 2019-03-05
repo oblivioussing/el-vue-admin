@@ -3,10 +3,10 @@ const dictList = () => import('@/views/setting/dict') // 字典管理
 
 const setting = {
   path: '/setting',
+  component: Home,
   icon: 'setting',
   meta: { title: '设置' },
   menu: true,
-  component: Home,
   children: [
     {
       path: '/dict',

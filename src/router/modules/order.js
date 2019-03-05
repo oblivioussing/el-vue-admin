@@ -10,10 +10,10 @@ const paidOrderView = () => import('@/views/order/paid/view')
 
 const prize = {
   path: '/order',
+  component: Home,
   icon: 'order',
   meta: { title: '订单' },
   menu: true,
-  component: Home,
   children: [
     {
       path: '/unpayOrderAdd',
