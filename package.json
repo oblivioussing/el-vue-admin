@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dayjs": "^1.8.8",
     "element-ui": "^2.4.4",
     "js-md5": "^0.7.3",
-    "moment": "^2.22.2",
     "v-contextmenu": "^2.8.0",
     "vue": "^2.5.16",
     "vue-event-proxy": "^1.0.4",
