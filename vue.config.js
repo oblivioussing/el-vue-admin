@@ -11,6 +11,7 @@ module.exports = {
         'process.env.LOCAL_URL': JSON.stringify(environment.localUrl)
       })
     ],
+    // 使用cdn
     externals: {
       'axios': 'axios',
       'element-ui': 'ELEMENT',
