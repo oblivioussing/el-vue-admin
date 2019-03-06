@@ -1,18 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import system from './modules/system' // 系统
-import order from './modules/order' // 订单
-import setting from './modules/setting' // 设置
-
 Vue.use(Router)
+
+// 动态获取模块文件
+const files = require.context('./modules', true, /\.js$/)
+let routes = []
+files.keys().forEach(key => {
+  routes = routes.concat(files(key).default)
+})
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    ...system, // 系统
-    order, // 订单
-    setting // 设置
-  ]
+  routes
 })
