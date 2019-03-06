@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const environment = require('./build/environment')
 
 module.exports = {
-  publicPath: '/',
+  publicPath: '/admin',
   configureWebpack: {
     plugins: [
       // 定义全局变量
@@ -14,11 +14,11 @@ module.exports = {
     // 使用cdn
     externals: {
       'axios': 'axios',
-      'element-ui': 'ELEMENT',
       'moment': 'moment',
       'vue': 'Vue',
       'vue-router': 'VueRouter',
-      'vuex': 'Vuex'
+      'vuex': 'Vuex',
+      'element-ui': 'ELEMENT'
     }
   },
   css: {
