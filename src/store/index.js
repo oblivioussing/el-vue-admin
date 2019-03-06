@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import persistedState from 'vuex-persistedstate'
-import menuTabs from './modules/menu-tabs' // 菜单切换
-import user from './modules/user' // 用户信息
 
 Vue.use(Vuex)
 
+// 动态获取模块文件
+const files = require.context('./modules', false, /\.js$/)
+let modules = {}
+files.keys().forEach(key => {
+  modules[key.replace(/(\.\/|\.js)/g, '')] = files(key).default
+})
+
 export default new Vuex.Store({
-  modules: {
-    menuTabs,
-    user
-  },
+  modules,
   plugins: [persistedState({ key: process.env.BASE_URL })]
 })
