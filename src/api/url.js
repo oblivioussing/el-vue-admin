@@ -41,6 +41,7 @@ const localMap = {
 }
 
 let stage = process.env.STAGE
+console.log(stage)
 // development,production
 const nodeEnv = process.env.NODE_ENV
 // nodeEnv为production并且stage不存在默认为生产环境

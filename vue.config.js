@@ -2,8 +2,7 @@ const webpack = require('webpack')
 const environment = require('./build/environment')
 
 module.exports = {
-  baseUrl: '/',
-  assetsDir: './static',
+  publicPath: '/',
   configureWebpack: {
     plugins: [
       // 定义全局变量
