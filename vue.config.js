@@ -10,7 +10,15 @@ module.exports = {
         'process.env.STAGE': JSON.stringify(environment.stage),
         'process.env.LOCAL_URL': JSON.stringify(environment.localUrl)
       })
-    ]
+    ],
+    externals: {
+      'axios': 'axios',
+      'element-ui': 'ELEMENT',
+      'moment': 'moment',
+      'vue': 'Vue',
+      'vue-router': 'VueRouter',
+      'vuex': 'Vuex'
+    }
   },
   css: {
     loaderOptions: {
