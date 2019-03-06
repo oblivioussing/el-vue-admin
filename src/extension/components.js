@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 // 动态获取组件
 let system = require.context('../components/system', false, /\.vue$/) // 系统
-let business = require.context('../components/system', false, /\.vue$/) // 业务
+let business = require.context('../components/business', false, /\.vue$/) // 业务
 // 文件映射
 const map = { system, business }
 // 遍历组件
