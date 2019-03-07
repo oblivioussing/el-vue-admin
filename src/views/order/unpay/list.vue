@@ -76,8 +76,7 @@ export default {
     },
     // 编辑
     edit (row) {
-      console.log(row)
-      // this.$router.push('unpayOrderEdit')
+      this.$router.push('unpayOrderEdit')
     },
     // 详情
     detail () {
