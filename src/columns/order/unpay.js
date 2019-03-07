@@ -5,16 +5,6 @@ const unpay = [
   { prop: 'buyerName', label: '购买方名称' },
   { prop: 'sellerName', label: '销售方名称' },
   { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
-  { prop: 'expireTime', label: '订单有效期' },
   { label: '操作', fixed: 'right', width: '110' }
 ]
 export default unpay

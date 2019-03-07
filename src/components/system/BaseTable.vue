@@ -5,6 +5,7 @@
         <template v-if="item.prop">
           <el-table-column v-bind="item" :key="index"></el-table-column>
         </template>
+        <!-- 操作按钮 -->
         <el-table-column v-else v-bind="item" :key="index">
           <template slot-scope="scope">
             <slot name="operate" :row="scope.row"></slot>
