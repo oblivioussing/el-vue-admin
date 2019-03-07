@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <div>
     <!-- 筛选条件 -->
     <el-row class="toolbar search">
       <el-form :inline="true" :model="form">
@@ -24,34 +24,10 @@
       </el-button-group>
     </el-row>
     <!-- 列表 -->
-    <el-container class="list-container">
-      <el-table :data="list" v-loading="loading" border height="100%">
-        <el-table-column label="订单编号">
-          <template slot-scope="scope">
-            <div @click="detail(scope.row.orderNo)" class="table-link">{{scope.row.orderNo}}</div>
-          </template>
-        </el-table-column>
-        <el-table-column prop="orderTypeName" label="订单类型"></el-table-column>
-        <el-table-column label="下单时间">
-          <template slot-scope="scope">{{scope.row.createTime|fmtDate}}</template>
-        </el-table-column>
-        <el-table-column prop="buyerName" label="购买方名称"></el-table-column>
-        <el-table-column prop="sellerName" label="销售方名称"></el-table-column>
-        <el-table-column label="订单有效期">
-          <template slot-scope="scope">{{scope.row.expireTime|fmtDate}}</template>
-        </el-table-column>
-        <el-table-column label="操作" width="110">
-          <template slot-scope="scope">
-            <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </el-container>
+    <base-table :data="list" v-loading="loading"></base-table>
     <!-- 分页 -->
-    <el-footer>
-      <pagination @getList="getList" :form.sync="form" :total="total"></pagination>
-    </el-footer>
-  </el-container>
+    <pagination @getList="getList" :form.sync="form" :total="total"></pagination>
+  </div>
 </template>
 
 <script>
@@ -68,7 +44,7 @@ export default {
     this.getList()
     // 监听列表刷新事件
     this.$on('global:unpayList', ret => {
-      this.$message.success('保存成功')
+      this.getList()
     })
   },
   methods: {
@@ -84,13 +60,6 @@ export default {
           }
         )
       }
-      // this.loading = true
-      // const data = await this.$getData('api/listUnpayOrder', this.form)
-      // this.loading = false
-      // if (data) {
-      //   this.list = data
-      //   this.total = this.list.length
-      // }
     },
     // 新增
     add () {
@@ -103,19 +72,6 @@ export default {
     // 详情
     detail () {
       this.$router.push('unpayOrderView')
-    },
-    // 查询
-    query () {
-      this.getlist()
-    },
-    // 刷新
-    refresh () {
-      this.reset()
-      this.getlist()
-    },
-    // 重置
-    reset () {
-      this.form = {}
     }
   }
 }

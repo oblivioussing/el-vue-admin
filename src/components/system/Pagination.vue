@@ -1,8 +1,10 @@
 <template>
-  <el-row class="toolbar m-t-5 t-a-c">
-    <el-pagination @current-change="currentChange" @size-change="sizeChange" :current-page="pageNum" :page-size="pageSize" :total="total" :page-sizes="[10, 20, 30, 50,100]" layout="total, sizes, prev, pager, next, jumper">
-    </el-pagination>
-  </el-row>
+  <el-footer>
+    <el-row class="toolbar m-t-5 t-a-c">
+      <el-pagination @current-change="currentChange" @size-change="sizeChange" :current-page="pageNum" :page-size="pageSize" :total="total" :page-sizes="[10, 20, 30, 50,100]" layout="total, sizes, prev, pager, next, jumper">
+      </el-pagination>
+    </el-row>
+  </el-footer>
 </template>
 
 <script>
