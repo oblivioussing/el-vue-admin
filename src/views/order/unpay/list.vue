@@ -16,12 +16,9 @@
     </el-row>
     <!-- 操作按钮 -->
     <operate :options="['add','query','refresh','reset']" @add="add" @query="query" @refresh="refresh" @reset="reset">
-      <template v-slot:left>
-        <el-button type="primary">新增2</el-button>
-      </template>
     </operate>
     <!-- 列表 -->
-    <base-table :data="list" v-loading="loading"></base-table>
+    <base-table :data="list" :columns="columns" v-loading="loading"></base-table>
     <!-- 分页 -->
     <pagination @getList="getList" :form.sync="form" :total="total"></pagination>
   </div>
@@ -29,12 +26,15 @@
 
 <script>
 import list from '@/mixins/list'
+import columns from '@/columns/order/unpay'
 
 export default {
   name: 'unpayOrderList',
   mixins: [list],
   data () {
-    return {}
+    return {
+      columns: columns
+    }
   },
   created () {
     // 获取列表
@@ -51,9 +51,11 @@ export default {
         this.list.push(
           {
             orderNo: 123456,
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
+            orderTypeName: '矿泉水',
+            date: new Date().getTime(),
+            buyerName: '张三',
+            sellerName: '李四',
+            expireTime: new Date().getTime()
           }
         )
       }

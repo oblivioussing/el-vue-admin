@@ -17,7 +17,12 @@
 
 <script>
 export default {
-  props: ['options'],
+  props: {
+    options: {
+      type: Array,
+      required: true
+    }
+  },
   data () {
     return {
       test: { msg: 2 }
