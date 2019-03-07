@@ -13,7 +13,7 @@
 export default {
   props: ['add'],
   created () {
-    console.log(this.add)
+    console.log(this.$parent)
   }
 }
 </script>

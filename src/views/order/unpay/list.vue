@@ -15,7 +15,7 @@
       </el-form>
     </el-row>
     <!-- 操作按钮 -->
-    <operate a="123" @add="add" @query="query" @refresh="refresh" @reset="reset"></operate>
+    <operate @add="add" @query="query" @refresh="refresh" @reset="reset"></operate>
     <!-- 列表 -->
     <base-table :data="list" v-loading="loading"></base-table>
     <!-- 分页 -->
