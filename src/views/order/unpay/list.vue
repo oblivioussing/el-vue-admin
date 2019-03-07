@@ -55,15 +55,13 @@
 </template>
 
 <script>
+import list from '@/mixins/list'
+
 export default {
   name: 'unpayOrderList',
+  mixins: [list],
   data () {
-    return {
-      list: [], // 列表
-      form: {}, // 表单
-      total: 0, // 总条数
-      loading: false // loading
-    }
+    return {}
   },
   created () {
     // 获取列表
