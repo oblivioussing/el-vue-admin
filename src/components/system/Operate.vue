@@ -16,6 +16,22 @@ export default {
     // 判断是否显示选项
     isShow (val) {
       return this.options.includes(val)
+    },
+    // 新增
+    add () {
+      this.$emit('add')
+    },
+    // 查询
+    query () {
+      this.$emit('query')
+    },
+    // 刷新
+    refresh () {
+      this.$emit('refresh')
+    },
+    // 重置
+    reset () {
+      this.$emit('reset')
     }
   }
 }
