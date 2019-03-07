@@ -15,7 +15,11 @@
       </el-form>
     </el-row>
     <!-- 操作按钮 -->
-    <operate :options="['add','query','refresh','reset']" @add="add" @query="query" @refresh="refresh" @reset="reset"></operate>
+    <operate :options="['add','query','refresh','reset']" @add="add" @query="query" @refresh="refresh" @reset="reset">
+      <template v-slot:left>
+        <el-button type="primary">新增2</el-button>
+      </template>
+    </operate>
     <!-- 列表 -->
     <base-table :data="list" v-loading="loading"></base-table>
     <!-- 分页 -->

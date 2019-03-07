@@ -1,10 +1,16 @@
 <template>
   <el-row class="toolbar operate">
-    <el-button v-if="isShow('add')" @click="add" type="primary">新增</el-button>
+    <el-button-group>
+      <el-button v-if="isShow('add')" @click="add" type="primary">新增</el-button>
+      <!-- slot -->
+      <slot name="left"></slot>
+    </el-button-group>
     <el-button-group class="vetically right-10">
       <el-button v-if="isShow('query')" @click="query" type="primary">查询</el-button>
       <el-button v-if="isShow('refresh')" @click="refresh" type="primary">刷新</el-button>
       <el-button v-if="isShow('reset')" @click="reset" type="primary">重置</el-button>
+      <!-- slot -->
+      <slot name="right"></slot>
     </el-button-group>
   </el-row>
 </template>
@@ -12,6 +18,11 @@
 <script>
 export default {
   props: ['options'],
+  data () {
+    return {
+      test: { msg: 2 }
+    }
+  },
   methods: {
     // 判断是否显示选项
     isShow (val) {
