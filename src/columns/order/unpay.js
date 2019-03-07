@@ -15,6 +15,6 @@ const unpay = [
   { prop: 'expireTime', label: '订单有效期' },
   { prop: 'expireTime', label: '订单有效期' },
   { prop: 'expireTime', label: '订单有效期' },
-  { label: '操作', width: '110' }
+  { label: '操作', fixed: 'right', width: '110' }
 ]
 export default unpay
