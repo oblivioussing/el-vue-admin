@@ -2,13 +2,11 @@
   <el-container class="list-container">
     <el-table v-bind="$attrs" v-on="$listeners" border height="100%">
       <template v-for="(item,index) in columns">
-        <template v-if="item.prop">
-          <el-table-column v-bind="item" :key="index"></el-table-column>
-        </template>
-        <!-- 操作按钮 -->
-        <el-table-column v-else v-bind="item" :key="index">
+        <el-table-column v-bind="item.attrs" :key="index">
           <template slot-scope="scope">
-            <slot name="operate" :row="scope.row"></slot>
+            <!-- 判断是否有slot -->
+            <slot v-if="item.slot" :row="scope.row" :name="item.slot"></slot>
+            <span v-else>{{scope.row[item.attrs.prop] | across}}</span>
           </template>
         </el-table-column>
       </template>

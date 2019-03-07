@@ -19,6 +19,11 @@
     </operate>
     <!-- 列表 -->
     <base-table :data="list" :columns="columns" v-loading="loading">
+      <!-- 下单时间 -->
+      <template v-slot:date="scope">
+        {{scope.row.date | dateFmt}}
+      </template>
+      <!-- 操作 -->
       <template v-slot:operate="scope">
         <el-button @click="edit(scope.row)" type="primary">编辑</el-button>
       </template>
@@ -58,7 +63,7 @@ export default {
             orderNo: 123456,
             orderTypeName: '矿泉水',
             date: new Date().getTime(),
-            buyerName: '张三',
+            buyerName: '',
             sellerName: '李四',
             expireTime: new Date().getTime()
           }
