@@ -23,11 +23,6 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-      test: { msg: 2 }
-    }
-  },
   methods: {
     // 判断是否显示选项
     isShow (val) {

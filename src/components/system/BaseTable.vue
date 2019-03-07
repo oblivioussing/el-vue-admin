@@ -7,7 +7,7 @@
         </template>
         <el-table-column v-else v-bind="item" :key="index">
           <template slot-scope="scope">
-            <el-button @click="edit(scope.row.id)" type="primary">编辑</el-button>
+            <slot name="operate" :row="scope.row"></slot>
           </template>
         </el-table-column>
       </template>

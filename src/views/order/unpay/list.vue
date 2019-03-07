@@ -18,7 +18,11 @@
     <operate :options="['add','query','refresh','reset']" @add="add" @query="query" @refresh="refresh" @reset="reset">
     </operate>
     <!-- 列表 -->
-    <base-table :data="list" :columns="columns" v-loading="loading"></base-table>
+    <base-table :data="list" :columns="columns" v-loading="loading">
+      <template v-slot:operate="scope">
+        <el-button @click="edit(scope.row)" type="primary">编辑</el-button>
+      </template>
+    </base-table>
     <!-- 分页 -->
     <pagination @getList="getList" :form.sync="form" :total="total"></pagination>
   </div>
@@ -50,6 +54,7 @@ export default {
       for (let i = 0; i < 15; i++) {
         this.list.push(
           {
+            id: i,
             orderNo: 123456,
             orderTypeName: '矿泉水',
             date: new Date().getTime(),
@@ -65,8 +70,9 @@ export default {
       this.$router.push('unpayOrderAdd')
     },
     // 编辑
-    edit () {
-      this.$router.push('unpayOrderEdit')
+    edit (row) {
+      console.log(row)
+      // this.$router.push('unpayOrderEdit')
     },
     // 详情
     detail () {
