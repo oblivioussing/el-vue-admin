@@ -8,4 +8,3 @@ files.keys().forEach(key => {
   const name = key.replace(/(\.\/|\.vue)/g, '')
   Vue.component(name, component)
 })
-
