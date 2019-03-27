@@ -42,8 +42,7 @@ export default {
   mixins: [list],
   data () {
     return {
-      columns: columns, // 列表字段
-      form: {} // 表单
+      columns: columns // 列表字段
     }
   },
   created () {
