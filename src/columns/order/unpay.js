@@ -1,4 +1,4 @@
-const unpay = [
+export default [
   {
     attrs: { prop: 'orderNo', label: '订单号' }
   },
@@ -23,4 +23,3 @@ const unpay = [
     slot: 'operate'
   }
 ]
-export default unpay

@@ -18,7 +18,7 @@
     <operate :options="['add','query','refresh','reset']" @add="add" @query="query" @refresh="refresh" @reset="reset">
     </operate>
     <!-- 列表 -->
-    <base-table :data="list" :columns="columns" v-loading="loading">
+    <sing-table :data="list" :columns="columns" v-loading="loading">
       <!-- 下单时间 -->
       <template v-slot:date="scope">
         {{scope.row.date | dateFmt}}
@@ -27,7 +27,7 @@
       <template v-slot:operate="scope">
         <el-button @click="edit(scope.row)" type="primary">编辑</el-button>
       </template>
-    </base-table>
+    </b-table>
     <!-- 分页 -->
     <pagination @getList="getList" :form.sync="form" :total="total"></pagination>
   </div>
