@@ -85,12 +85,11 @@ export default {
   methods: {
     // 保存
     save () {
-      this.$emit('global:unpayList')
-      this.$store.commit('menuTabs/removeTab', 'unpayOrderEdit')
+      this.$back(this)
     },
     // 关闭
     close () {
-      this.$store.commit('menuTabs/removeTab', 'unpayOrderEdit')
+      this.$back(this, false)
     }
   }
 }

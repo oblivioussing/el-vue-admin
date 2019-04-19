@@ -27,7 +27,7 @@
       <template v-slot:operate="scope">
         <el-button @click="edit(scope.row)" type="primary">编辑</el-button>
       </template>
-    </b-table>
+    </sing-table>
     <!-- 分页 -->
     <pagination @getList="getList" :form.sync="form" :total="total"></pagination>
   </div>
@@ -49,7 +49,7 @@ export default {
     // 获取列表
     this.getList()
     // 监听列表刷新事件
-    this.$on('global:unpayList', ret => {
+    this.$on('global:unpayOrderList', ret => {
       this.getList()
     })
   },

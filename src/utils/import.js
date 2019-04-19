@@ -4,6 +4,7 @@ import '@/assets/iconfont/iconfont.css'
 
 import '@/extension/filters' // 过滤器
 import '@/extension/directives' // 指令
+import '@/extension/mixins' // mixin
 import '@/extension/warden' // 路由守卫
 import '@/extension/components' // 全局组件
 import '@/utils/core' // core
