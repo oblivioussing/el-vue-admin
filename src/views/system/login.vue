@@ -86,7 +86,7 @@ export default {
 
 <style lang="scss" scoped>
 .bg-login {
-  background: url(../../assets/img/test/bg_login.jpg) no-repeat;
+  background: url(../../assets/img/bg_login.jpg) no-repeat;
   background-size: 100% 100%;
   height: 100%;
 }

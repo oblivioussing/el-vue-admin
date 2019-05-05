@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import apiUrl from './url'
 import core from '@/utils/core'
-import msg from '@/const/msg/msg'
+import msg from '@/const/msg'
 import { Message } from 'element-ui'
 
 const request = {

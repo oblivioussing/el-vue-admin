@@ -3,8 +3,8 @@
     <el-row>
       <!-- 左侧顶部logo -->
       <div class="el-menu-header">
-        <img v-show="isCollapse" class="gravity-center" :src="testImg.logo_smell">
-        <img v-show="!isCollapse" class="gravity-center" :src="testImg.logo_large">
+        <img v-show="isCollapse" class="gravity-center" :src="imgDict.logo_smell">
+        <img v-show="!isCollapse" class="gravity-center" :src="imgDict.logo_large">
       </div>
       <!-- 侧栏导航菜单 -->
       <el-menu @select="menuSelect" :collapse="isCollapse" :default-active="actived" :default-openeds="[stair]" unique-opened class="el-menu-vertical">
@@ -12,9 +12,7 @@
         <template v-for="item in menus">
           <el-submenu v-if="isMenu(item)" :index="item.path" :key="item.path">
             <template slot="title">
-              <svg class="icon" aria-hidden="true">
-                <use :xlink:href="'#icon-'+item.icon"></use>
-              </svg>
+              <icon-svg :name="item.icon"></icon-svg>
               <span slot="title">{{titleFmt(item.meta)}}</span>
             </template>
             <!-- 二级菜单 -->
@@ -31,9 +29,7 @@
     <el-container>
       <!-- 右侧顶部 -->
       <el-header class="top-header rel">
-        <svg @click="collapseToggle" class="icon vertically ic-menu-toggle">
-          <use xlink:href="#icon-menu"></use>
-        </svg>
+        <icon-svg @click="collapseToggle" class="icon vertically ic-menu-toggle" name="menu"></icon-svg>
         <!-- 功能选择 -->
         <header-action></header-action>
       </el-header>
@@ -65,16 +61,16 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import HeaderAction from './components/HeaderAction'
-import testImg from '@/const/img/test'
+import imgDict from '@/const/img'
 
 export default {
   name: 'home',
   components: { HeaderAction },
   data () {
     return {
+      imgDict, // 图片字典
       isCollapse: false, // 是否折叠菜单
-      contextmenuPath: '', // 鼠标右键选中的path
-      testImg: testImg // 测试图片
+      contextmenuPath: '' // 鼠标右键选中的path
     }
   },
   created () {
