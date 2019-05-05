@@ -2,7 +2,7 @@
   <el-container class="list-container">
     <el-table v-bind="$attrs" v-on="$listeners" border height="100%">
       <template v-for="(item,index) in columns">
-        <el-table-column v-bind="item.attrs" :key="index">
+        <el-table-column v-bind="item.attrs" :key="index" sortable show-overflow-tooltip=true>
           <template slot-scope="scope">
             <!-- 判断是否有slot -->
             <slot v-if="item.slot" :row="scope.row" :name="item.slot"></slot>

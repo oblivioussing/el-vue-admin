@@ -11,5 +11,4 @@ import '@/api/interceptors' // 请求拦截
 
 // 引用svg
 const files = require.context('../assets/svg/', false, /\.svg$/)
-console.log(files.keys())
 files.keys().map(files)
