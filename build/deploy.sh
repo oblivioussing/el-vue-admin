@@ -1,6 +1,6 @@
 #! /bin/bash
 
-current_path="../dist/*"
+current_path="/usr/code/vue-el-admin/dist/."
 target_path="/srv/www/admin/"
 # 打包项目
 npm run build
