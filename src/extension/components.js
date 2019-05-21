@@ -1,10 +1,10 @@
 import Vue from 'vue'
 
 // 动态获取组件
-let system = require.context('../components/system', false, /\.vue$/) // 系统
+let global = require.context('../components/global', false, /\.vue$/) // 系统
 let business = require.context('../components/business', false, /\.vue$/) // 业务
 // 文件映射
-const map = { system, business }
+const map = { global, business }
 // 遍历组件
 for (let item in map) {
   // 赋值为全局组件
