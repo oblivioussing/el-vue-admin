@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import apiCode from '@/enum/apiCode'
+import apiCode from '@/api/apiCode'
 
 class Core {
   constructor () {

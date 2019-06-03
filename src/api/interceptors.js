@@ -1,6 +1,6 @@
 import axios from 'axios'
 import router from '@/router'
-import apiCode from '@/enum/apiCode'
+import apiCode from '@/api/apiCode'
 import { Message } from 'element-ui'
 
 axios.defaults.withCredentials = true // 允许携带cookie
