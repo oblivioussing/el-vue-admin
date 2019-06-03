@@ -73,6 +73,19 @@ class Core {
       return urlObject
     }
   }
+  // 对象数组去重
+  distinct (arr, field = 'id') {
+    const res = new Map()
+    return arr.filter(item => !res.has(item[field]) && res.set(item[field], 1))
+  }
+  // 简单数组去重
+  sole (arr) {
+    return Array.from(new Set(arr))
+  }
+  // 克隆
+  clone (val) {
+    return JSON.parse(JSON.stringify(val))
+  }
   // 判断接口是否成功
   isSuccess (ret) {
     return ret.resultCode === apiCode.success
