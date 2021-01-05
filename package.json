@@ -9,7 +9,7 @@
     "deploy": "./build/deploy.sh"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.8",
     "element-ui": "^2.4.4",
     "js-md5": "^0.7.3",
